@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=&quot;auto&quot;>
 
 
 
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      781 字
+      778 字
     </span>
   
 
@@ -252,7 +252,7 @@
 <p>non-IID问题可以通过用户间交换一些数据来解决，但是这会带来额外的通讯开销和隐私泄露问题。为此，论文作者寻求一种在non-IID数据场景下的通讯开销较低的on-device ML方法。论文作者提出了一种在线知识蒸馏方法（Federated Distillation）来解决通讯开销问题，该方法的通讯开销和模型大小无关，仅和模型输出的维度有关。在进行Federated Distillation之前，通过联合增强 (FAug) 纠正non-IID训练数据集，这是一种使用生成对抗网络 (GAN) 的数据增强方案，该方案在隐私泄漏和通信开销之间的权衡下进行集体训练。训练后的 GAN 使每个设备能够在本地再现所有设备的数据样本，从而使训练数据集是IID的。</p>
 <p><img src="Untitled.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h1 id="Federated-Distillation"><a href="#Federated-Distillation" class="headerlink" title="Federated Distillation"></a>Federated Distillation</h1><p>FD来自Knowledge Distillation的一种在线版本，称为co-distillation（CD）。在CD中，每个设备是一个学生，并且将所有其他设备的输出的平均值视为teacher输出。使用交叉熵定期测量师生输出差异，该交叉熵成为学生的损失正则化器，称为蒸馏正则化器，从而在分布式训练过程中获得其他设备的知识。</p>
-<p>FD将每个客户端上每个类别的logit vector做平均处理，记$F<em>{k,l}^{(i)}$为第$i$个客户端上第$k$轮迭代的低$l$类别的logit vector，对于样本$(x_b,y_b)$，对其输出$p</em>{y_b}=F(w^{(i)},x_b)$做如下处理：</p>
+<p>FD将每个客户端上每个类别的logit vector做平均处理，记<script type="math/tex">F_{k,l}^{(i)}</script>为第<script type="math/tex">i</script>个客户端上第<script type="math/tex">k</script>轮迭代的第<script type="math/tex">l</script>类别的logit vector，对于样本<script type="math/tex">(x_b,y_b)</script>，对其输出<script type="math/tex">p_{y_b}=F(w^{(i)},x_b)</script>做如下处理：</p>
 <script type="math/tex; mode=display">F_{k,y_b}^{(i)} += F(w^{(i)},y_b)</script><script type="math/tex; mode=display">cnt_{k,y_b}^{(i)} += 1</script><p>其中$cnt$是记录当前类别样本数量的变量，最后每个类别的logit vector在做平均处理，发送到服务器</p>
 <script type="math/tex; mode=display">\overline{F}_{k,y_b}^{(i)} = F_{k,y_b}^{(i)} / cnt_{k,y_b}^{(i)}</script><p>服务器收到所有的local logit vector之后，对所有的local logit vector求和</p>
 <script type="math/tex; mode=display">\overline{F}_{k,l} = \sum_{i=1}^M \overline{F}_{k,y_b}^{(i)}</script><p>每个device收到的是其余device的平均值，即global logit vector</p>
@@ -555,8 +555,25 @@
 
 
 <!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script  src="/js/boot.js" ></script>
 
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 </html>
