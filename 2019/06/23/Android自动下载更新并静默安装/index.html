@@ -1,0 +1,535 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&quot;auto&quot;>
+
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="
+问题描述&amp;emsp;&amp;emsp;在开发Android户外广告屏程序的时候，遇到一个需求：自动检测有新版本，如果有新版本自动下载，下载完成后实现静默安装。
+解决方法自动检测有新版本，并自动下载新版本安装包：&amp;emsp;&amp;emsp;github上有封装好的android检测更新、自动下载、自动安装的开源工具XUpdate，其中提供了一整套能够满足本问题需求的方法：">
+  <meta name="author" content="Zhen Qin">
+  <meta name="keywords" content="">
+  
+  <title>Android自动下载更新并静默安装 - Zhen&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zhenqinzq.cn","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":90,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"n8CShB1kKDUXPnDyT0ElXgpp-gzGzoHsz","app_key":"RkelLX8GB6XVsAYRx2GPRxNx","server_url":"https://n8cshb1k.lc-cn-n1-shared.com"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Zhen's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner_others.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Android自动下载更新并静默安装">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-06-23 16:00" pubdate>
+        2019年6月23日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Android自动下载更新并静默安装</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年5月23日 中午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <!--  -->
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>&emsp;&emsp;在开发Android户外广告屏程序的时候，遇到一个需求：自动检测有新版本，如果有新版本自动下载，下载完成后实现静默安装。</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><h4 id="自动检测有新版本，并自动下载新版本安装包："><a href="#自动检测有新版本，并自动下载新版本安装包：" class="headerlink" title="自动检测有新版本，并自动下载新版本安装包："></a>自动检测有新版本，并自动下载新版本安装包：</h4><p>&emsp;&emsp;github上有封装好的android检测更新、自动下载、自动安装的开源工具<a target="_blank" rel="noopener" href="https://github.com/xuexiangjys/XUpdate">XUpdate</a>，其中提供了一整套能够满足本问题需求的方法：</p>
+<span id="more"></span>
+<p>&emsp;&emsp;首先在Application中进行初始化配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java">XUpdate.get()<br>    .debug(<span class="hljs-keyword">true</span>)<br>    .isWifiOnly(<span class="hljs-keyword">true</span>)                                               <span class="hljs-comment">//默认设置只在wifi下检查版本更新</span><br>    .isGet(<span class="hljs-keyword">true</span>)                                                    <span class="hljs-comment">//默认设置使用get请求检查版本</span><br>    .isAutoMode(<span class="hljs-keyword">true</span>)                                              <span class="hljs-comment">//设为自动模式，可以在下载完后进行静默安装</span><br>    .param(<span class="hljs-string">&quot;versionCode&quot;</span>, UpdateUtils.getVersionCode(<span class="hljs-keyword">this</span>))         <span class="hljs-comment">//设置默认公共请求参数</span><br>    .param(<span class="hljs-string">&quot;appKey&quot;</span>, getPackageName())<br>    .setOnUpdateFailureListener(<span class="hljs-keyword">new</span> OnUpdateFailureListener() &#123;     <span class="hljs-comment">//设置版本更新出错的监听</span><br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onFailure</span><span class="hljs-params">(UpdateError error)</span> </span>&#123;<br>            <span class="hljs-keyword">if</span> (error.getCode() != CHECK_NO_NEW_VERSION) &#123;          <span class="hljs-comment">//对不同错误进行处理</span><br>                ToastUtils.toast(error.toString());<br>            &#125;<br>        &#125;<br>    &#125;)<br>    .supportSilentInstall(<span class="hljs-keyword">true</span>)                                     <span class="hljs-comment">//设置是否支持静默安装，默认是true</span><br>    .setIUpdateHttpService(<span class="hljs-keyword">new</span> OKHttpUpdateHttpService())           <span class="hljs-comment">//这个必须设置！实现网络请求功能。</span><br>    .init(<span class="hljs-keyword">this</span>);                                                    <span class="hljs-comment">//这个必须初始化</span><br></code></pre></td></tr></table></figure>
+<p>&emsp;&emsp;然后在Activity中调用如下代码完成更新：<br><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">XUpdate</span>.</span></span><span class="hljs-keyword">new</span><span class="hljs-constructor">Build(<span class="hljs-params">getActivity</span>()</span>)<br>        .update<span class="hljs-constructor">Url(<span class="hljs-params">mUpdateUrl</span>)</span><br>        .update<span class="hljs-literal">()</span>;<br></code></pre></td></tr></table></figure></p>
+<p><strong><font color=red>但是，在使用KingRoot获取了Root权限的Android 4.4设备上测试后，发现在下载完apk后，自动安装会失败</font></strong></p>
+<h3 id="进一步的解决方案"><a href="#进一步的解决方案" class="headerlink" title="进一步的解决方案"></a>进一步的解决方案</h3><p>&emsp;&emsp;在查资料的过程中发现cnblogs上有人提供了一个<a target="_blank" rel="noopener" href="https://www.cnblogs.com/feijian/p/5160575.html">ApkController</a>，可是实现在有root权限的情况下静默安装。虽然在原文中作者提到这一工具类安装别人的apk可以，但是不能安装自己，但是实际测试发现可以安装自己（猜想原作者应该是用debug签名的app安装自己release签名的app，导致签名不一致从而不能安装自己）。</p>
+<p>&emsp;&emsp;结合<a target="_blank" rel="noopener" href="https://github.com/xuexiangjys/XUpdate">XUpdate</a>和<a target="_blank" rel="noopener" href="https://www.cnblogs.com/feijian/p/5160575.html">ApkController</a>，最终实现了这个需求。即重写OnFileDownloadListener，在下载完成后，调用ApkController进行安装。在Application中进行配置的代码和之前一样，开启更新部分的代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs java">XUpdate.newBuild(MainActivity.<span class="hljs-keyword">this</span>)<br>        .setOnFileDownloadListener(<span class="hljs-keyword">new</span> OnFileDownloadListener() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onStart</span><span class="hljs-params">()</span></span><br><span class="hljs-function">            </span>&#123;<br>                Log.d(TAG, <span class="hljs-string">&quot;onStart: &quot;</span>);<br>            &#125;<br><br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onProgress</span><span class="hljs-params">(<span class="hljs-keyword">float</span> progress, <span class="hljs-keyword">long</span> total)</span></span><br><span class="hljs-function">            </span>&#123;<br>                Log.d(TAG, <span class="hljs-string">&quot;onProgress: &quot;</span> + progress + <span class="hljs-string">&quot;, &quot;</span> + total);<br>            &#125;<br><br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">onCompleted</span><span class="hljs-params">(File file)</span></span><br><span class="hljs-function">            </span>&#123;<br>                Log.d(TAG, <span class="hljs-string">&quot;onCompleted: &quot;</span> + file);<br>                ApkController.install(file.getPath(), getApplicationContext());<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;  <span class="hljs-comment">// false表示不调用XUpdate自带的安装模块来安装apk</span><br>            &#125;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onError</span><span class="hljs-params">(Throwable throwable)</span></span><br><span class="hljs-function">            </span>&#123;<br>                Log.d(TAG, <span class="hljs-string">&quot;onError: &quot;</span> + throwable);<br>            &#125;<br>        &#125;)<br>        .updateUrl(CommonUrL.URL_CHECK_UPDATE)<br>        .update();<br></code></pre></td></tr></table></figure></p>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><video width="100%" height="400" src="show.mp4" controls="controls" preload="metadata">
+The video tag is not supported by your browser.</video>
+
+<p><br /><br><br /></p>
+<h3 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h3><p>ApkController完整代码，搬自<a target="_blank" rel="noopener" href="https://www.cnblogs.com/feijian/p/5160575.html">cnblogs</a>，侵删。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ApkController</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> String TAG = <span class="hljs-string">&quot;ApkController&quot;</span>;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 描述: 安装</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">install</span><span class="hljs-params">(String apkPath,Context context)</span></span>&#123;<br>        <span class="hljs-comment">// 先判断手机是否有root权限</span><br>        <span class="hljs-keyword">if</span>(hasRootPerssion())&#123;<br>            <span class="hljs-comment">// 有root权限，利用静默安装实现</span><br>            Log.d(TAG, <span class="hljs-string">&quot;install: 已经root&quot;</span>);<br>            <span class="hljs-keyword">return</span> clientInstall(apkPath);<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            Log.d(TAG, <span class="hljs-string">&quot;install: 没有root&quot;</span>);<br>            <span class="hljs-comment">// 没有root权限，利用意图进行安装</span><br>            File file = <span class="hljs-keyword">new</span> File(apkPath);<br>            <span class="hljs-keyword">if</span>(!file.exists())<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>            Intent intent = <span class="hljs-keyword">new</span> Intent();<br>            intent.setAction(<span class="hljs-string">&quot;android.intent.action.VIEW&quot;</span>);<br>            intent.addCategory(<span class="hljs-string">&quot;android.intent.category.DEFAULT&quot;</span>);<br>            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);<br>            intent.setDataAndType(Uri.fromFile(file),<span class="hljs-string">&quot;application/vnd.android.package-archive&quot;</span>);<br>            context.startActivity(intent);<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 描述: 卸载</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">uninstall</span><span class="hljs-params">(String packageName,Context context)</span></span>&#123;<br>        <span class="hljs-keyword">if</span>(hasRootPerssion())&#123;<br>            <span class="hljs-comment">// 有root权限，利用静默卸载实现</span><br>            <span class="hljs-keyword">return</span> clientUninstall(packageName);<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            Uri packageURI = Uri.parse(<span class="hljs-string">&quot;package:&quot;</span> + packageName);<br>            Intent uninstallIntent = <span class="hljs-keyword">new</span> Intent(Intent.ACTION_DELETE,packageURI);<br>            uninstallIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);<br>            context.startActivity(uninstallIntent);<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 判断手机是否有root权限</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">hasRootPerssion</span><span class="hljs-params">()</span></span>&#123;<br>        PrintWriter PrintWriter = <span class="hljs-keyword">null</span>;<br>        Process process = <span class="hljs-keyword">null</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            process = Runtime.getRuntime().exec(<span class="hljs-string">&quot;su&quot;</span>);<br>            PrintWriter = <span class="hljs-keyword">new</span> PrintWriter(process.getOutputStream());<br>            PrintWriter.flush();<br>            PrintWriter.close();<br>            <span class="hljs-keyword">int</span> value = process.waitFor();<br>            <span class="hljs-keyword">return</span> returnResult(value);<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<span class="hljs-keyword">finally</span>&#123;<br>            <span class="hljs-keyword">if</span>(process!=<span class="hljs-keyword">null</span>)&#123;<br>                process.destroy();<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 静默安装</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">clientInstall</span><span class="hljs-params">(String apkPath)</span></span>&#123;<br>        PrintWriter PrintWriter = <span class="hljs-keyword">null</span>;<br>        Process process = <span class="hljs-keyword">null</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            process = Runtime.getRuntime().exec(<span class="hljs-string">&quot;su&quot;</span>);<br>            PrintWriter = <span class="hljs-keyword">new</span> PrintWriter(process.getOutputStream());<br>            PrintWriter.println(<span class="hljs-string">&quot;chmod 777 &quot;</span>+apkPath);<br>            PrintWriter.println(<span class="hljs-string">&quot;export LD_LIBRARY_PATH=/vendor/lib:/system/lib&quot;</span>);<br>            PrintWriter.println(<span class="hljs-string">&quot;pm install -r &quot;</span>+apkPath);<br>            PrintWriter.flush();<br>            PrintWriter.close();<br>            <span class="hljs-keyword">int</span> value = process.waitFor();<br>            <span class="hljs-keyword">return</span> returnResult(value);<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<span class="hljs-keyword">finally</span>&#123;<br>            <span class="hljs-keyword">if</span>(process!=<span class="hljs-keyword">null</span>)&#123;<br>                process.destroy();<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 静默卸载</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">clientUninstall</span><span class="hljs-params">(String packageName)</span></span>&#123;<br>        PrintWriter PrintWriter = <span class="hljs-keyword">null</span>;<br>        Process process = <span class="hljs-keyword">null</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            process = Runtime.getRuntime().exec(<span class="hljs-string">&quot;su&quot;</span>);<br>            PrintWriter = <span class="hljs-keyword">new</span> PrintWriter(process.getOutputStream());<br>            PrintWriter.println(<span class="hljs-string">&quot;LD_LIBRARY_PATH=/vendor/lib:/system/lib &quot;</span>);<br>            PrintWriter.println(<span class="hljs-string">&quot;pm uninstall &quot;</span>+packageName);<br>            PrintWriter.flush();<br>            PrintWriter.close();<br>            <span class="hljs-keyword">int</span> value = process.waitFor();<br>            <span class="hljs-keyword">return</span> returnResult(value);<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<span class="hljs-keyword">finally</span>&#123;<br>            <span class="hljs-keyword">if</span>(process!=<span class="hljs-keyword">null</span>)&#123;<br>                process.destroy();<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 启动app</span><br><span class="hljs-comment">     * com.exmaple.client/.MainActivity</span><br><span class="hljs-comment">     * com.exmaple.client/com.exmaple.client.MainActivity</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">startApp</span><span class="hljs-params">(String packageName,String activityName)</span></span>&#123;<br>        <span class="hljs-keyword">boolean</span> isSuccess = <span class="hljs-keyword">false</span>;<br>        String cmd = <span class="hljs-string">&quot;am start -n &quot;</span> + packageName + <span class="hljs-string">&quot;/&quot;</span> + activityName + <span class="hljs-string">&quot; \n&quot;</span>;<br>        Process process = <span class="hljs-keyword">null</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            process = Runtime.getRuntime().exec(cmd);<br>            <span class="hljs-keyword">int</span> value = process.waitFor();<br>            <span class="hljs-keyword">return</span> returnResult(value);<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">finally</span>&#123;<br>            <span class="hljs-keyword">if</span>(process!=<span class="hljs-keyword">null</span>)&#123;<br>                process.destroy();<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> isSuccess;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">returnResult</span><span class="hljs-params">(<span class="hljs-keyword">int</span> value)</span></span>&#123;<br>        <span class="hljs-comment">// 代表成功</span><br>        <span class="hljs-keyword">if</span> (value == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (value == <span class="hljs-number">1</span>) &#123; <span class="hljs-comment">// 失败</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>        &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">// 未知情况</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Coding/">Coding</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Android/">Android</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/06/23/android-socket%E7%9B%B8%E5%85%B3/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Android Socket相关</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/06/20/Android_Volley%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
+                        <span class="hidden-mobile">Android Volley框架遇到的坑</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        沪ICP备2021012484号
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

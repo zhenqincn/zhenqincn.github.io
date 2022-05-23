@@ -1,0 +1,646 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&quot;auto&quot;>
+
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="炼丹一时爽，一直炼丹一直爽！">
+  <meta name="author" content="Zhen Qin">
+  <meta name="keywords" content="">
+  
+  <title>Biscotti: A Blockchain System for Private and Secure Federated Learning - Zhen&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zhenqinzq.cn","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":90,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"n8CShB1kKDUXPnDyT0ElXgpp-gzGzoHsz","app_key":"RkelLX8GB6XVsAYRx2GPRxNx","server_url":"https://n8cshb1k.lc-cn-n1-shared.com"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Zhen's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner_others.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Biscotti: A Blockchain System for Private and Secure Federated Learning">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-11 18:07" pubdate>
+        2021年7月11日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      23
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Biscotti: A Blockchain System for Private and Secure Federated Learning</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年5月23日 中午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="Biscotti-A-Blockchain-System-for-Private-and-Secure-Federated-Learning"><a href="#Biscotti-A-Blockchain-System-for-Private-and-Secure-Federated-Learning" class="headerlink" title="Biscotti: A Blockchain System for Private and Secure Federated Learning"></a>Biscotti: A Blockchain System for Private and Secure Federated Learning</h1><p>TPDS 2021</p>
+<p>论文提出了Biscotti，一个完全去中心化的P2P的多方机器学习方法，在分布式的P2P环境下，通过区块链和加密原语来协调对等客户端之间的隐私保护ML过程。</p>
+<p>实验证明了方法的scalable, fault tolerant and defends against known attacks</p>
+<h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>在联邦学习中，过去被动地贡献数据地cliekts现在主动地参与到训练过程中，带来了如下问题：</p>
+<ul>
+<li>模型投毒</li>
+<li>信息泄露攻击：敌人伪装成诚实的client，通过观测目标所共享的模型更新来推断client的训练数据中的敏感信息</li>
+</ul>
+<p>上述两种攻击在现有的工作中可以通过集中式的异常检测、差分隐私或安全聚合来防御。但是：</p>
+<ul>
+<li>没有一种private且decentralized的解决方案来同时解决上述问题</li>
+<li>这些方法不适用于缺乏可信权威中心的去中心化环境</li>
+</ul>
+<p>由于ML中对于收敛不需要很强的共识或一致性，传统的公式协议例如拜占庭容错（BFT）对于ML框架过于严格。</p>
+<h1 id="Contribution"><a href="#Contribution" class="headerlink" title="Contribution"></a>Contribution</h1><p>将数个先前的技术整合到一个系统中，在P2P环境中提供安全隐私的多方机器学习。</p>
+<p>解决各种攻击的手段：</p>
+<ul>
+<li>女巫攻击：Consistent Hashing using verifiable random functions (VRF) and proof-of-federation</li>
+<li>投毒攻击：Update Validation Using Multi-Krum (Multi-Krum 拒绝与大多数更新方向大不相同的模型更新)</li>
+<li>信息泄漏攻击：VRF Verifier Peers and Differentially-Private Updates Using Pre-Committed Noise</li>
+<li>差分隐私的效果丢失：Secure Update Aggregation and Cryptographic Commitments</li>
+</ul>
+<h1 id="Assumptions"><a href="#Assumptions" class="headerlink" title="Assumptions"></a>Assumptions</h1><h2 id="Design-Assumptions"><a href="#Design-Assumptions" class="headerlink" title="Design Assumptions"></a>Design Assumptions</h2><ul>
+<li>论文假设任何对等方的股权所有权都可以从区块链的当前状态公开获得。开始时的初始stake分配可能来自在线数据共享市场、竞争机构之间的共享声誉评分或来自社交网络的辅助信息。</li>
+<li>假设 P2P 训练所需的所有信息都传播给第一个块中的所有节点，包括模型、超参数、优化算法和学习目标。</li>
+<li>假设peer从自己的数据中抽取样本来计算模型更新的时候，是independently且uniformly的，这确保了multi-krum是准确的。</li>
+</ul>
+<h2 id="Attacker-Assumptions"><a href="#Attacker-Assumptions" class="headerlink" title="Attacker Assumptions"></a>Attacker Assumptions</h2><ul>
+<li>假设攻击者可以控制多个peer以进行女巫攻击，但是不会超过30%的stake</li>
+<li>限制攻击者只能进行”数据被错误地标记为不同的类别“的投毒攻击</li>
+<li>当对手执行信息泄漏攻击时，我们假设他们的目标是学习受害者本地数据集的属性。 论文提供记录级隐私，以防止对来自用户数据集的单个示例进行去匿名化。</li>
+</ul>
+<h1 id="Biscotti-Design"><a href="#Biscotti-Design" class="headerlink" title="Biscotti Design"></a>Biscotti Design</h1><p>Biscotti中的共识采用proof-of-federation (PoF) 机制，以在每轮训练中达成模型状态的共识。PoF机制基于PoS机制提出</p>
+<p>在PoF中，stake定义为peer对整个系统的贡献。Peer通过提供有价值的模型更新或者通过协助共识过程以获取stake。</p>
+<h2 id="Goals"><a href="#Goals" class="headerlink" title="Goals"></a>Goals</h2><ol>
+<li>收敛到最优全局模型（在联邦学习环境中没有对手训练的相同模型）</li>
+<li>通过验证peer的模型更新来防止投毒攻击</li>
+<li>保证训练数据的隐私，防止信息泄露攻击</li>
+<li>防止串通其他peer在没有获得足够stake的情况下获得影响力。</li>
+</ol>
+<h2 id="Design"><a href="#Design" class="headerlink" title="Design"></a>Design</h2><p>节点加入Biscotti一起合作训练一个全局模型。分布式账本中的每个块代表 SGD 的一次迭代，账本包含每次迭代时全局模型的状态。</p>
+<p><img src="Untitled.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>在每轮迭代中</p>
+<ol>
+<li>peer本地计算SGD更新</li>
+<li>获取噪声，该噪声是从每个客户端独有的一组噪声对等点收集的，并由 VRF 选择</li>
+<li>每个peer通过差分隐私噪声来mask他们的更新</li>
+<li>masked update由验证委员会验证以防止中毒。 如果通过 Multi-Krum，验证委员会中的每个成员都会签署对peer的unmasked update的承诺</li>
+<li>如果大多数验证委员会的成员都签署了一个更新</li>
+<li>签署后的更新通过Shamir secret shares共享</li>
+<li>通过Shamir secret shares共享的update被发送给聚合委员会，聚合委员会使用安全协议来聚合出unmasked updates</li>
+<li>所有的被选为认证和聚合委员会的节点将会得到系统额外的stake奖励。更新的聚合被添加到全局模型中的一个新创建的块中，该块被传播给所有对等点并附加到账本中</li>
+<li>通过使用最新的全局模型以及获取的最新的stake，peer回到第1步并重复</li>
+</ol>
+<p><strong>安全聚合</strong></p>
+<p>目的：保证协调者只能拿到最终的模型，但不能获取特定Host的模型；</p>
+<p>原理：上传模型时，增加随机数R；保证所有的随机数加起来的时候又能抵消；</p>
+<p><strong>Shamir’s Secret Sharing</strong></p>
+<p>秘密分享通过把秘密进行分割，并把秘密在$n$个参与者中分享，使得只有多于特定t个参与者合作才可以计算出或是恢复秘密，而少于$t$个参与者则不可以得到有关秘密。</p>
+<p>对于sharmir(t,w)方案，就是指准备$w$把钥匙，至少要$t$把钥匙才能开启。</p>
+<h3 id="Initializing-the-Training"><a href="#Initializing-the-Training" class="headerlink" title="Initializing the Training"></a>Initializing the Training</h3><p>Biscotti peer使用创世区块中的信息来初始化训练过程，获取初始模型$w_0$、迭代次数$T$、SGD更新的创建委员会的公钥$PK$、所有peer的公钥$PK_i$、$T$次SGC迭代中每个peer预先承诺的噪声$\zeta_1, \ldots, \zeta_T$、peer的初始stake分布、区块增加时stake的更新函数</p>
+<h3 id="Block-Design"><a href="#Block-Design" class="headerlink" title="Block Design"></a>Block Design</h3><p><img src="Untitled%201.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>每个Biscotti包含先前区块的哈希指针，聚合后的SGD更新以及当前全局模型的快照。为了验证聚合是诚实计算的，需要在块中包含单独的更新。 但是，单独存储它们会泄漏有关个人私人训练数据的信息。因此采用了polynomial commitments来保护隐私。polynomial commitments将SGD更新映射到椭圆曲线的一个点上。</p>
+<h3 id="Using-Stake-for-Role-Selection"><a href="#Using-Stake-for-Role-Selection" class="headerlink" title="Using Stake for Role Selection"></a>Using Stake for Role Selection</h3><p>在 Biscotti 的每次迭代中，由peer stake加权的一致哈希为系统中的一些peer指定角色（noiser、验证者、聚合者）。</p>
+<p><img src="Untitled%202.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Noising-Protocol"><a href="#Noising-Protocol" class="headerlink" title="Noising Protocol"></a>Noising Protocol</h3><p>每个peer i生成T个噪声向量$\zeta_t$并提交到账本，$N$个peer共生成一个$N \times T$的表。当一个peer准备好贡献梯度的时候，运行noising VRF并联系每一个noising peer $k$，请求noise向量。该peer然后使用verifier VRF来决定verifiers集合，然后想这些verifiers提交masked update, a commit to the unmasked update。同时提交noise VRF proof，向验证者证明其噪声来自作为其噪声集一部分的peers。</p>
+<h3 id="Verification-Protocol"><a href="#Verification-Protocol" class="headerlink" title="Verification Protocol"></a>Verification Protocol</h3><p>验证者节点对收到的更新集运行 Multi-Krum，并通过接受每轮收到的大多数更新来过滤恶意更新。</p>
+<p>每个验证者从每个peer收到的内容如下：</p>
+<ol>
+<li>masked SGD update</li>
+<li>一个commitment to the SGD update</li>
+<li>$k$个噪声commitment</li>
+<li>一个VRF证明，确认k个噪声peer的身份</li>
+</ol>
+<p>当一个验证者收到masked的update时候，它可以通过承诺的同态属性确认掩蔽的SGD update和原update、噪声是否一致。</p>
+<p><img src="Untitled%203.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>如果满足上式则通过认证</p>
+<hr>
+<h1 id="个人总结"><a href="#个人总结" class="headerlink" title="个人总结"></a>个人总结</h1><p>通过PoF机制选择验证委员会、聚合委员会，peer发送的添加了噪声的update必须要经过验证委员会的multi-krum认证</p>
+<p>为了避免peer的update受到隐私泄露攻击，peer的update发送给验证委员会的时候要加噪声；这个噪声是通过noiser committee预先计算好的，以避免投毒攻击的攻击者将恶意梯度加上一个特定的噪声，使得相加后的结果可以通过验证委员会的认证。</p>
+<p>在update从peer发送给聚合委员会的时候，使用了Shamir Secret Sharing协议，确保传输过程的安全</p>
+<p>所有peer生成的update都通过polynomial commitments变换后存储在该迭代轮次对应的区块中，这样既保护隐私，也能确保聚合的结果是可以验证的。</p>
+<p>通过具有同态性质的秘密共享</p>
+<p><img src="Untitled%204.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/44999983">密钥分享Secret Sharing介绍</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Blockchain/">Blockchain</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Federated-Learning/">Federated Learning</a>
+                    
+                      <a class="hover-with-bg" href="/tags/TPDS/">TPDS</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/07/14/Machine-Learning-with-Adversaries-Byzantine-Tolerant-Gradient-Descent/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Machine Learning with Adversaries: Byzantine Tolerant Gradient Descent</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/18/Android-drawable%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E4%B8%8D%E5%90%8Cdpi%E5%9B%BE%E7%89%87%E9%80%82%E9%85%8D%E5%8E%9F%E5%88%99/">
+                        <span class="hidden-mobile">Android drawable文件夹下不同dpi图片适配原则</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        沪ICP备2021012484号
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

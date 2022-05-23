@@ -1,0 +1,685 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&quot;auto&quot;>
+
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="记录一下用过的numpy的function">
+  <meta name="author" content="Zhen Qin">
+  <meta name="keywords" content="">
+  
+  <title>numpy function 列表 - Zhen&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zhenqinzq.cn","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":90,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"n8CShB1kKDUXPnDyT0ElXgpp-gzGzoHsz","app_key":"RkelLX8GB6XVsAYRx2GPRxNx","server_url":"https://n8cshb1k.lc-cn-n1-shared.com"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Zhen's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner_others.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="numpy function 列表">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-08-14 14:42" pubdate>
+        2019年8月14日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      19
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">numpy function 列表</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年5月23日 中午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>记录一下用过的numpy的function<br><span id="more"></span></p>
+<h2 id="np"><a href="#np" class="headerlink" title="np"></a>np</h2><h3 id="np-array"><a href="#np-array" class="headerlink" title="np.array"></a>np.array</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">array</span>(<span class="hljs-params"><span class="hljs-built_in">object</span>, dtype=<span class="hljs-literal">None</span>, copy=<span class="hljs-literal">True</span>, order=<span class="hljs-string">&#x27;K&#x27;</span>, subok=<span class="hljs-literal">False</span>, ndmin=<span class="hljs-number">0</span></span>)</span><br></code></pre></td></tr></table></figure>
+<p>可以根据list创建一个numpy数组<br><code>Parameters:</code></p>
+<ul>
+<li><code>object</code>，创建数组依据的对象</li>
+<li><code>dtype</code>，数据类型</li>
+<li><code>copy</code>，如果为true（默认值），则复制对象。 否则，只有当<strong>array</strong>返回副本，obj是嵌套序列，或者需要副本来满足任何其他要求（dtype，order等）时，才会生成副本。</li>
+<li><code>order</code>，<code>&#39;K&#39;</code>表示行优先，<code>&#39;F&#39;</code>表示列优先</li>
+<li><code>subok</code>, 如果为True，则子类将被传递，否则返回的数组将被强制为基类数组（默认）。</li>
+<li><code>ndmin</code>, 指定结果数组应具有的最小维数。为满足此要求，将根据需要预先设置形状。</li>
+</ul>
+<p><code>Returns</code> ndarray </p>
+<hr>
+<h3 id="np-arange"><a href="#np-arange" class="headerlink" title="np.arange"></a>np.arange</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">arange</span>(<span class="hljs-params">start, end, step</span>)</span><br></code></pre></td></tr></table></figure>
+<p>返回一个返回为$[start, end)$，步长为step的数组列表<br><code>Parameters</code></p>
+<ul>
+<li><code>start</code>, number, 开始值，默认为0</li>
+<li><code>end</code>, number, 结束值</li>
+<li><code>step</code>, 步长</li>
+</ul>
+<p><code>Returns</code> ndarray</p>
+<hr>
+<h3 id="np-argmin"><a href="#np-argmin" class="headerlink" title="np.argmin"></a>np.argmin</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">argmin</span>(<span class="hljs-params">a, axis=<span class="hljs-literal">None</span>, out=<span class="hljs-literal">None</span></span>)</span><br></code></pre></td></tr></table></figure>
+<p>返回沿某一个轴计算出的最小值的索引。<br><code>Parameters</code></p>
+<ul>
+<li><code>a</code>, 输入的数组</li>
+<li><code>axis</code>, 默认情况下会将数组展平，否则沿指定轴</li>
+<li><code>out</code>, 如果提供了值，结果将会输入该数组，该数组必须与np.argmin的返回结果有相同的shape和dtype</li>
+</ul>
+<p><code>Returns</code> ndarray, shape为a.shape获得的元组移除掉axis对应的轴，例如a.shape=(500, 100 , 20)，则<code>np.argmin(a, axis=1)</code>返回的数组shape为(500, 20)</p>
+<h3 id="np-argwhere"><a href="#np-argwhere" class="headerlink" title="np.argwhere"></a>np.argwhere</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">argwhere</span>(<span class="hljs-params">a</span>)</span><br></code></pre></td></tr></table></figure>
+<p>返回所有非零元素的索引, 可结合<code>n == x</code>或者<code>n &lt;= x</code>这种bool表达式来筛选一个数组中满足需求的元素的下标<br><code>Parameters</code></p>
+<ul>
+<li><code>a</code>, 输入数组</li>
+</ul>
+<p><code>Returns</code>, ndarray, shape=(?, a的维度)，其中每一项表示一个不为零的元素所在的位置$(x_1, x_2, x_3, … , x_n)$。</p>
+<p><code>Examples</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">a = np.random.randint(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, (<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;1:&#x27;</span>, np.argwhere(a))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;2:&#x27;</span>, np.argwhere(a).shape)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;3:&#x27;</span>, a == <span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;4:&#x27;</span>, np.argwhere(a == <span class="hljs-number">2</span>))<br></code></pre></td></tr></table></figure><br>输出结果：<br><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs inform7">1: <span class="hljs-comment">[<span class="hljs-comment">[0 0 0]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[0 0 1]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[0 0 2]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[0 0 3]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[0 1 0]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[0 1 1]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[0 1 3]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[0 2 0]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[0 2 1]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[0 2 2]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[0 2 3]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[1 0 0]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[1 0 1]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[1 0 2]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[1 0 3]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[1 1 0]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[1 1 1]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[1 1 2]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[1 1 3]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[1 2 0]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[1 2 1]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[1 2 2]</span>]</span><br>2: (22, 3)<br>3: <span class="hljs-comment">[<span class="hljs-comment">[<span class="hljs-comment">[False False False False]</span></span></span><br><span class="hljs-comment"><span class="hljs-comment">  <span class="hljs-comment">[False False False False]</span></span></span><br><span class="hljs-comment"><span class="hljs-comment">  <span class="hljs-comment">[False False False False]</span>]</span></span><br><span class="hljs-comment"></span><br><span class="hljs-comment"> <span class="hljs-comment">[<span class="hljs-comment">[ True False  True False]</span></span></span><br><span class="hljs-comment"><span class="hljs-comment">  <span class="hljs-comment">[False False False False]</span></span></span><br><span class="hljs-comment"><span class="hljs-comment">  <span class="hljs-comment">[False False False False]</span>]</span>]</span><br>4: <span class="hljs-comment">[<span class="hljs-comment">[1 0 0]</span></span><br><span class="hljs-comment"> <span class="hljs-comment">[1 0 2]</span>]</span><br></code></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="np-argsort"><a href="#np-argsort" class="headerlink" title="np.argsort"></a>np.argsort</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">argsort</span>(<span class="hljs-params">a, axis=-<span class="hljs-number">1</span>, kind=<span class="hljs-string">&#x27;quicksort&#x27;</span>, order=<span class="hljs-literal">None</span></span>)</span><br></code></pre></td></tr></table></figure>
+<p>返回对数组进行排序的索引。<br><code>Parameters</code></p>
+<ul>
+<li><code>a</code></li>
+<li><code>axis</code></li>
+<li><code>kind</code></li>
+<li><code>order</code></li>
+</ul>
+<p><code>Returns</code></p>
+<hr>
+<h3 id="np-unique"><a href="#np-unique" class="headerlink" title="np.unique"></a>np.unique</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">unique</span>(<span class="hljs-params">ar, return_index=<span class="hljs-literal">False</span>, return_inverse=<span class="hljs-literal">False</span>, return_counts=<span class="hljs-literal">False</span>, axis=<span class="hljs-literal">None</span></span>)</span><br></code></pre></td></tr></table></figure>
+<p>找到数组的唯一元素。<br>返回数组的已排序唯一元素。除了唯一元素外，还有三个可选输出：提供唯一值的输入数组的索引，重构输入数组的唯一数组的索引，以及输入数组中每个唯一值出现的次数。<br><code>Parameters</code></p>
+<ul>
+<li><code>ar</code>, 输入数组。除非指定了<code>axis</code>，否则如果它还不是1维的，将被展平。</li>
+</ul>
+<p><code>Returns</code>: ndarry, 排序后的所有元素都唯一的数组。</p>
+<hr>
+<h3 id="np-linspace"><a href="#np-linspace" class="headerlink" title="np.linspace"></a>np.linspace</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">linspace</span>(<span class="hljs-params">start, stop, num=<span class="hljs-number">50</span>, endpoint=<span class="hljs-literal">True</span>, retstep=<span class="hljs-literal">False</span>, dtype=<span class="hljs-literal">None</span>, axis=<span class="hljs-number">0</span></span>)</span><br></code></pre></td></tr></table></figure>
+<p>生成等差数列（在指定的间隔内返回均匀间隔的数字）<br><code>Parameters</code></p>
+<ul>
+<li><code>start</code>, 起始值</li>
+<li><code>stop</code>, 终值(生成的数列最后是否包含终值和<code>endpoint</code>有关)</li>
+<li><code>num</code>, 等差数列的长度</li>
+<li><code>endpoint</code>, bool, True表示生成的等差数列包含<code>stop</code>, 否则不包含. 默认为True. </li>
+<li></li>
+</ul>
+<p><code>Returns</code>: ndarry, 排序后的所有元素都唯一的数组。</p>
+<hr>
+<h2 id="np-random"><a href="#np-random" class="headerlink" title="np.random"></a>np.random</h2><h3 id="np-random-randint"><a href="#np-random-randint" class="headerlink" title="np.random.randint"></a>np.random.randint</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">randint</span>(<span class="hljs-params">low, high=<span class="hljs-literal">None</span>, size=<span class="hljs-literal">None</span>, dtype=<span class="hljs-string">&#x27;l&#x27;</span></span>)</span><br></code></pre></td></tr></table></figure>
+<p>返回离散均匀分布的随机整数<br><code>Parameters:</code></p>
+<ul>
+<li><code>low</code>, int, 下界</li>
+<li><code>high</code>, int, 上界</li>
+<li><code>size</code>, int或者tuple, 表示生成的形状</li>
+<li><code>dtype</code>, 数据类型, int或者int64</li>
+</ul>
+<p><code>Returns:</code> int或者ndarray</p>
+<hr>
+<h3 id="np-random-uniform"><a href="#np-random-uniform" class="headerlink" title="np.random.uniform"></a>np.random.uniform</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">uniform</span>(<span class="hljs-params">low=<span class="hljs-number">0.0</span>, high=<span class="hljs-number">1.0</span>, size=<span class="hljs-literal">None</span></span>)</span><br></code></pre></td></tr></table></figure>
+<p>生成范围为$[low, high)$的均匀分布的随机数<br><code>Parameters:</code></p>
+<ul>
+<li><code>low</code>, 下界，默认1.0</li>
+<li><code>high</code>, 上界，默认1.0 </li>
+<li><code>size</code>, int或者tuple, 表示生成的形状</li>
+</ul>
+<p><code>Returns:</code> int或者ndarray</p>
+<hr>
+<h2 id="np-linalg"><a href="#np-linalg" class="headerlink" title="np.linalg"></a>np.linalg</h2><p>linalg = linear + algebra</p>
+<h3 id="np-linalg-norm"><a href="#np-linalg-norm" class="headerlink" title="np.linalg.norm"></a>np.linalg.norm</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">norm</span>(<span class="hljs-params">x, <span class="hljs-built_in">ord</span>=<span class="hljs-literal">None</span>, axis=<span class="hljs-literal">None</span>, keepdims=<span class="hljs-literal">False</span></span>)</span><br></code></pre></td></tr></table></figure>
+<p>计算矩阵或向量的范数<br><code>Parameters</code></p>
+<ul>
+<li><code>x</code>，输入，可以是矩阵，也可以是1维</li>
+<li><code>ord</code>，范数类型<br><strong>向量的范数：</strong><ul>
+<li>ord=2，计算公式为$\sqrt {x_1^2 + x_2^2 +  \ldots  + x_n^2} $，默认的计算方式同2</li>
+<li>ord=1，计算公式为$\left|  \right| + \left|  \right| +  \ldots  + \left|  \right|$</li>
+<li>ord=<code>np.inf</code>，表示无穷范数,$l$<br><strong>矩阵的范数：</strong></li>
+<li>ord=2，计算公式为$\left| {\lambda E - {A^T}A} \right|$，求特征值，然后求最大特征值得算术平方根</li>
+<li>ord=1，列和的最大值</li>
+<li>ord=<code>np.inf</code>，行和的最大值</li>
+</ul>
+</li>
+<li><code>axis</code><ul>
+<li>axis=1表示按行向量处理，求多个行向量的范数</li>
+<li>axis=0表示按列向量处理，求多个列向量的范数</li>
+<li>axis=None表示矩阵范数。</li>
+</ul>
+</li>
+<li><code>keepdims</code>，是否保持矩阵的二维特性</li>
+</ul>
+<p><code>Returns</code><br><code>float</code>或者<code>ndarray</code></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hqh131360239/article/details/79061535">参考资料</a></p>
+<hr>
+<h2 id="numpy-ndarray"><a href="#numpy-ndarray" class="headerlink" title="numpy.ndarray"></a>numpy.ndarray</h2><p>此目录下列出的是numpy.ndarray的类成员function</p>
+<h3 id="numpy-ndarray-flatten"><a href="#numpy-ndarray-flatten" class="headerlink" title="numpy.ndarray.flatten"></a>numpy.ndarray.flatten</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">flatten</span>(<span class="hljs-params">self, order=<span class="hljs-string">&#x27;C&#x27;</span></span>)</span><br></code></pre></td></tr></table></figure>
+<p>将目标数组的copy展平为一维数组</p>
+<p><code>Parameters</code></p>
+<ul>
+<li><code>order</code>, <code>&#39;C&#39;</code>表示行优先, <code>&#39;F&#39;</code>表示列优先, <code>&#39;A&#39;</code>表示如果<code>a</code>在内存中是Fortran<em>连续</em>，则为主列顺序，否则为行主要顺序。<code>&#39;K&#39;</code>表示按元素在内存中出现的顺序展平<code>a</code>。</li>
+</ul>
+<p><code>Returns</code>, ndarray, 输入数组的副本，展平为一维。</p>
+<hr>
+<h3 id="numpy-ndarry-reshape"><a href="#numpy-ndarry-reshape" class="headerlink" title="numpy.ndarry.reshape"></a>numpy.ndarry.reshape</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">reshape</span>(<span class="hljs-params">self, shape, *shapes, order=<span class="hljs-string">&#x27;C&#x27;</span></span>)</span><br></code></pre></td></tr></table></figure>
+<p>返回包含具有新形状的相同数据的数组。</p>
+<p><code>Parameters</code>:</p>
+<ul>
+<li><code>shape</code>, tuple, 新数组的形状, 若某一维度不确定，可以用-1来替代，让numpy自动推断，但是只能有一个axis为-1</li>
+<li><code>order</code>, <code>&#39;C&#39;</code>表示行优先, <code>&#39;F&#39;</code>表示列优先, <code>&#39;A&#39;</code>表示如果<code>a</code>在内存中是Fortran<em>连续</em>，则为主列顺序，否则为行主要顺序。<code>&#39;K&#39;</code>表示按元素在内存中出现的顺序。</li>
+</ul>
+<p><code>Returns</code>: ndarry, 改变形状后的数组</p>
+<hr>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Coding/">Coding</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/numpy/">numpy</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/08/26/Android%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BC%80%E6%BA%90%E5%BA%93%E6%80%BB%E7%BB%93/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Android框架和开源库总结</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/07/03/bert/">
+                        <span class="hidden-mobile">BERT:Pre-training of Deep Bidirectional Transformers for Language Understanding</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        沪ICP备2021012484号
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

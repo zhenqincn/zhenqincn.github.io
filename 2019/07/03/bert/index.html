@@ -1,0 +1,625 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&quot;auto&quot;>
+
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="论文链接
+Introduction中提出的观点
+预训练语言模型对于优化许多NLP task是非常有效的。既包括通过整体上分析句子来预测他们之间的关系的NLI和paraphrasing这些sentence-level的任务，也包括命名实体识别和问答等要求模型能够产生细粒度的token leve的输出的token-level任务。
+">
+  <meta name="author" content="Zhen Qin">
+  <meta name="keywords" content="">
+  
+  <title>BERT:Pre-training of Deep Bidirectional Transformers for Language Understanding - Zhen&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zhenqinzq.cn","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":90,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"n8CShB1kKDUXPnDyT0ElXgpp-gzGzoHsz","app_key":"RkelLX8GB6XVsAYRx2GPRxNx","server_url":"https://n8cshb1k.lc-cn-n1-shared.com"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Zhen's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner_others.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="BERT:Pre-training of Deep Bidirectional Transformers for Language Understanding">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-07-03 16:41" pubdate>
+        2019年7月3日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">BERT:Pre-training of Deep Bidirectional Transformers for Language Understanding</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年5月23日 中午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p><a target="_blank" rel="noopener" href="https://www.aclweb.org/anthology/N19-1423">论文链接</a></p>
+<h3 id="Introduction中提出的观点"><a href="#Introduction中提出的观点" class="headerlink" title="Introduction中提出的观点"></a>Introduction中提出的观点</h3><ul>
+<li>预训练语言模型对于优化许多NLP task是非常有效的。既包括通过整体上分析句子来预测他们之间的关系的NLI和paraphrasing这些sentence-level的任务，也包括命名实体识别和问答等要求模型能够产生细粒度的token leve的输出的token-level任务。</li>
+</ul>
+<span id="more"></span>
+<ul>
+<li><p>对于下游任务来说，有两种方法来应用预训练的语言表达：</p>
+<ul>
+<li><strong>feature-based</strong><ul>
+<li>ELMo使用包括预训练的表达作为额外特征的task-specific architectures</li>
+</ul>
+</li>
+<li><strong>fine-tuning</strong><ul>
+<li>Generative Pre-trained Transformer (OpenAI GPT)，引入了最少的task-specific参数，并且是在下游任务上通过简单的fine-tuning所有的预训练的参数来训练的。</li>
+</ul>
+</li>
+</ul>
+<p>上述这两种方法在预训练过程中使用同样的目标函数，他们使用单向语言模型来学习通用的语言表达。</p>
+</li>
+<li>论文作者认为当前的这些方法限制了预训练表达的效果，特别是对于fine-tuning的方法。主要的限制是因为标准语言模型是单向的，这局限了在预训练过程中可以选择结构。例如，在OpenAI GPT中，作者使用从左到右的结构，因此在self-attention层中，每一个token只能注意到前一个token。这样的限制对于sentence-level的任务是次优的，并且在将基于fine-tuning的方法应用到诸如问答的token-level的任务上的时候非常有害，因为从两个方向整合背景至关重要。</li>
+<li>论文作者提出了BERT，改进了基于fine-tuning的方法。BERT通过使用masked language model (MLM)预训练目标，减轻了之前提到的单向限制。这一masked language model随机掩盖一些输入中的token，目标是仅仅基于这些被掩盖的词的上下文，来预测它们原有的vocabulary id。不同于从左到右的语言模型的预训练，MLM目标允许表达融合左右上下文，使我们能够预训练一个深度双向transformer。除了MLM，论文作者还使用“预测下一个句子”的任务来共同预训练text-pair表示。</li>
+</ul>
+<h3 id="论文贡献"><a href="#论文贡献" class="headerlink" title="论文贡献"></a>论文贡献</h3><ul>
+<li>论证了双向UI训练对于language representation的重要性。</li>
+<li>展示了预训练的表达减少了对于许多heavily-engineered task-specific architectures的需求。</li>
+<li>BERT提升了11项NLP任务中的当前最好的方法的效果。</li>
+</ul>
+<h3 id="BERT"><a href="#BERT" class="headerlink" title="BERT"></a>BERT</h3><p>BERT框架分两步，预训练和fine-tuning。在预训练过程中，模型在不同的预训练任务中在无标签的数据上训练。在fine-tuning过程中，BERT模型首先以预训练得到的参数进行初始化，所有的这些参数都使用来自下游任务的有标签的数据进行fine-tuning。每一个下游任务都有独立的调优后的模型，即使他们是用相同的预训练的参数进行初始化的。</p>
+<p>Figure 1中的给出了一个问答的例子作为BERT运行的样例。除了输出层，预训练过程和fine-tuning过程使用的结构是一样的。不同的下游任务中，相同的预训练模型参数被用来初始化模型。在fine-tuning过程中，所有的参数都被调优。CLS是一个被加到每一个输入样例前的特殊字符，SEP是一个特殊的分割token（例如分割questions和answers）。</p>
+<div style="width:100%;margin:auto">
+<img src="/2019/07/03/bert/fig1.PNG" srcset="/img/loading.gif" lazyload class="" title="Figure 1: Overall pre-training and fine-tuning procedures for BERT">
+<!-- ![Figure 1: Overall pre-training and fine-tuning procedures for BERT](fig1.PNG) -->
+</div>
+
+<h4 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h4><p>BERT的模型结构是一个基于<a target="_blank" rel="noopener" href="http://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf">Attention is all you need</a>论文中的描述的原始实现的多层双向transformer encoder。</p>
+<!-- ###### 变量对照表
+变量名|含义
+--|:--:
+$L$|the number of layers
+$H$|the hidden size
+$A$|the number of self-attention heads
+
+论文作者给出了两种尺寸的BERT模型，其中BERT<sub>BASE</sub>的参数为L=12，H=76 -->
+<h4 id="输入-输出表达"><a href="#输入-输出表达" class="headerlink" title="输入/输出表达"></a>输入/输出表达</h4><ul>
+<li>使用了WordPiece embeddings和30,000个token的词汇表。</li>
+<li>为了让BERT能够适应各种下游任务，BERT的输入可以是单个的句子，也可以是<Question, Answer>这样的句子对。句子对被打包成一个序列，用特殊标记（[SEP]）将它们分开。然后，添加一个learned embedding (Segment Embeddings)到每一个token中，指出它们属于句子A还是句子B。</li>
+<li>每个序列的第一个token始终是特殊分类嵌入（[CLS]）。对应于该token的最终隐藏状态（Transformer的输出）被用作分类任务的聚合序列表示。对于非分类任务，将忽略此向量。</li>
+</ul>
+<div style="width:100%;margin:auto">
+<img src="/2019/07/03/bert/fig2.PNG" srcset="/img/loading.gif" lazyload class="" title="Figure 2: BERT输入表达。input embeddings是token embeddings，segmentation embeddings和position embeddings的和">
+<!-- ![Figure 2: BERT输入表达。input embeddings是token embeddings，segmentation embeddings和position embeddings的和](fig2.PNG) -->
+</div>
+
+
+<h3 id="BERT预训练"><a href="#BERT预训练" class="headerlink" title="BERT预训练"></a>BERT预训练</h3><h4 id="Task-1-Masked-LM"><a href="#Task-1-Masked-LM" class="headerlink" title="Task #1: Masked LM"></a>Task #1: Masked LM</h4><p>直觉来说，有理由相信深度双向模型比从left-to-right模型或者left-to-right和right-to-right的浅连接模型更强大。不幸地是，标准的条件语言模型只允许被left-to-right或者right-to-left来训练，因为双向条件允许每一个词间接地”see itself”，并且模型在多层上下文中只能很一般地预测出目标词。</p>
+<p>为了训练一个深度双向表达，论文作者随机mask掉每个句子中15%的WordPiece tokens，然后让模型预测这些masked tokens。和denoising auto-encoders不同的是，他们只预测这些被masked的词，而不是重建整个输入。</p>
+<p>论文作者提到，这样做的一个缺点你是，由于[MASK]token在fine-tuning的过程中没有出现，pre-training和fine-tuning之前会有误配的情况。为了解决这一问题，论文作者并不总是用[MASK]来代替被mask的词，而是在以15%的比例选出需要被mask的词之后，对这些词：80%的概率以[MASK]来替代，10%的概率不变，10%的概率用随机的一个token来替代。</p>
+<h4 id="Task-2-Next-Sentence-Prediction-NSP"><a href="#Task-2-Next-Sentence-Prediction-NSP" class="headerlink" title="Task #2: Next Sentence Prediction (NSP)"></a>Task #2: Next Sentence Prediction (NSP)</h4><p>像Question Answering和Natural Language Inference (NLI)这些任务，都是基于理解两个句子之间的关系的，这些关系不能通过language modeling来被直接捕获。因此对于这些任务，BERT增加了第二个训练任务：输入句子A、B，预测句子B是不是句子A的下一句（句子B的来源：50%是A的下一句，50%的概率随机选择）。</p>
+<h3 id="Fine-tuning-BERT"><a href="#Fine-tuning-BERT" class="headerlink" title="Fine-tuning BERT"></a>Fine-tuning BERT</h3><p>Fine-tuning过程中，作者简单地将task-specific的inpus和outouts对BERT做一个plug in。例如图4，对于(a)和(b)是sequence-level的任务，(c)和(d)是token-level的任务。在图中，$E$表示input embedding, $T_i$表示token i的上下文表示(${T_i}\in\mathbb{R}^H$, final hidden vector of the $i^{th}$ input token)，[CLS]是分类输出的特殊符号，[SEP]是分割不连续的token序列的符号。</p>
+<p>fine-tuning过程中，针对sequence-level classification任务(例如情感分类)，将第一个token的输出表示经过softmax层得到分类结果输出；对于token-level classification，将所有token的transformer的最后输出经过softmax层，得到分类结果。</p>
+<div style="width:100%;margin:auto">
+<img src="/2019/07/03/bert/fig4.PNG" srcset="/img/loading.gif" lazyload class="" title="Figure 4: Illustrations of Fine-tuning BERT on Different Tasks.">
+<!-- ![Figure 4: Illustrations of Fine-tuning BERT on Different Tasks.](fig4.PNG) -->
+</div>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Language-Model/">Language Model</a>
+                    
+                      <a class="hover-with-bg" href="/tags/NAACL/">NAACL</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/08/14/numpy-function%E5%AF%B9%E7%85%A7%E8%A1%A8/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">numpy function 列表</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/06/23/android-socket%E7%9B%B8%E5%85%B3/">
+                        <span class="hidden-mobile">Android Socket相关</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        沪ICP备2021012484号
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
