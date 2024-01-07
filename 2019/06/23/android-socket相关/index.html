@@ -1,251 +1,69 @@
-
-
-<!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&quot;auto&quot;>
-
-
-
-<head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="项目需求中有在Android平台上与其他设备通过Socket通讯的需求，将用到的框架、一些util记录在此">
-  <meta name="author" content="Zhen Qin">
-  <meta name="keywords" content="">
-  
-  <title>Android Socket相关 - Zhen&#39;s Blog</title>
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"zhenqinzq.cn","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":90,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"n8CShB1kKDUXPnDyT0ElXgpp-gzGzoHsz","app_key":"RkelLX8GB6XVsAYRx2GPRxNx","server_url":"https://n8cshb1k.lc-cn-n1-shared.com"}},"search_path":"/local-search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
-
-
-<body>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>Zhen's Blog</strong>&nbsp;</a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/banner_others.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Android Socket相关">
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2019-06-23 18:01" pubdate>
-        2019年6月23日 晚上
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      2.3k 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      35
-       分钟
-    </span>
-  
-
-  
-  
-    
-      <!-- LeanCloud 统计文章PV -->
-      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
-        <i class="iconfont icon-eye" aria-hidden="true"></i>
-        <span id="leancloud-page-views"></span> 次
-      </span>
-    
-  
-</div>
-
-            
-          </div>
-
-          
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">Android Socket相关</h1>
-            
-              <p class="note note-info">
-                
-                  本文最后更新于：2022年5月23日 中午
-                
-              </p>
-            
-            <div class="markdown-body">
-              <p>项目需求中有在Android平台上与其他设备通过Socket通讯的需求，将用到的框架、一些util记录在此<br><span id="more"></span></p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"><title>Zhen Qin @ ZJU-CS</title><meta name="author" content="Zhen Qin"><link rel="shortcut icon" href="/img/favicon.png"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><meta name="generator" content="Hexo 5.4.0"></head><body><header id="page_header"><div class="header_wrap"><div id="blog_name"><a class="blog_title" id="site-name" href="/">Zhen Qin @ ZJU-CS</a></div><button class="menus_icon"><div class="navicon"></div></button><ul class="menus_items"><li class="menus_item"><a class="site-page" href="/#publications"> Publications</a></li><li class="menus_item"><a class="site-page" href="/"> About</a></li></ul></div></header><main id="page_main"><div class="side-card sticky"><div class="card-wrap" itemscope itemtype="http://schema.org/Person"><div class="author-avatar"><img class="avatar-img" src="/img/photo.jpg" onerror="this.onerror=null;this.src='/img/profile.png'" alt="avatar"></div><div class="author-discrip"><h3>Zhen Qin</h3><p class="author-bio">Third-year PhD Student @ College of Computer Science and Technology, Zhejiang University</p></div><div class="author-links"><button class="btn m-social-links">Links</button><ul class="social-icons"><li><a class="social-icon" href="https://github.com/zhenqincn" target="_blank"><i class="fab fa-github" aria-hidden="true"></i></a></li><li><a class="social-icon" href="mailto:zhenqincn@gmail.com" target="_blank"><i class="fas fa-envelope" aria-hidden="true"></i></a></li><li><a class="social-icon" href="https://www.researchgate.net/profile/Zhen-Qin-29" target="_blank"><i class="fab fa-researchgate" aria-hidden="true"></i></a></li></ul><ul class="social-links"><li><a class="e-social-link" href="https://scholar.google.com/citations?user=yRy86mQAAAAJ&amp;hl=zh-CN" target="_blank"><i class="fas fa-graduation-cap" aria-hidden="true"></i><span>Google Scholar</span></a></li></ul></div><a class="cv-links" href="/attaches/CV.pdf" target="_blank"><i class="fas fa-file-pdf" aria-hidden="true"><span>My Detail CV.</span></i></a></div></div><div class="page" itemscope itemtype="http://schema.org/CreativeWork"><h2 class="page-title">Android Socket相关</h2><article><p>项目需求中有在Android平台上与其他设备通过Socket通讯的需求，将用到的框架、一些util记录在此<br><span id="more"></span></p>
 <h3 id="OkSocket"><a href="#OkSocket" class="headerlink" title="OkSocket"></a>OkSocket</h3><p>项目需要Android设备与其他设备保持长连接，考虑到自己实现起来较为麻烦，使用了<a target="_blank" rel="noopener" href="https://github.com/xuuhaoo/OkSocket">OkSocket</a>框架来实现Socket通讯。</p>
-<p>首先创建Socket基础信息对象和连接管理对象<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">ConnectionInfo info = <span class="hljs-keyword">new</span> ConnectionInfo(<span class="hljs-string">&quot;ip&quot;</span>, port);<br>IConnectionManager manager = OkSocket.open(info);<br></code></pre></td></tr></table></figure></p>
-<p>注册回调函数<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><code class="hljs java">manager.registerReceiver(<span class="hljs-keyword">new</span> SocketActionAdapter() &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onSocketIOThreadStart</span><span class="hljs-params">(String action)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">super</span>.onSocketIOThreadStart(action);<br>        Log.d(TAG, <span class="hljs-string">&quot;onSocketIOThreadStart: &quot;</span> + action);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onSocketIOThreadShutdown</span><span class="hljs-params">(String action, Exception e)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">super</span>.onSocketIOThreadShutdown(action, e);<br>        Log.d(TAG, <span class="hljs-string">&quot;onSocketIOThreadShutdown: &quot;</span> + action + <span class="hljs-string">&quot;, &quot;</span> + e);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onSocketDisconnection</span><span class="hljs-params">(ConnectionInfo info, String action, Exception e)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">super</span>.onSocketDisconnection(info, action, e);<br>        Log.d(TAG, <span class="hljs-string">&quot;onSocketDisconnection: &quot;</span> + info + <span class="hljs-string">&quot;, &quot;</span> + action + <span class="hljs-string">&quot;, &quot;</span> + e);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onSocketConnectionSuccess</span><span class="hljs-params">(ConnectionInfo info, String action)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">super</span>.onSocketConnectionSuccess(info, action);<br>        Log.d(TAG, <span class="hljs-string">&quot;onSocketConnectionSuccess: &quot;</span> + info + <span class="hljs-string">&quot;, &quot;</span> + action);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onSocketConnectionFailed</span><span class="hljs-params">(ConnectionInfo info, String action, Exception e)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">super</span>.onSocketConnectionFailed(info, action, e);<br>        Log.d(TAG, <span class="hljs-string">&quot;onSocketConnectionFailed: &quot;</span> + info + <span class="hljs-string">&quot;, &quot;</span> + action + <span class="hljs-string">&quot;, &quot;</span> + e);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onSocketReadResponse</span><span class="hljs-params">(ConnectionInfo info, String action, OriginalData data)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">super</span>.onSocketReadResponse(info, action, data);<br>        Log.d(TAG, <span class="hljs-string">&quot;onSocketReadResponse: &quot;</span> + info + <span class="hljs-string">&quot;, &quot;</span> + action + <span class="hljs-string">&quot;, &quot;</span> + data);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onSocketWriteResponse</span><span class="hljs-params">(ConnectionInfo info, String action, ISendable data)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">super</span>.onSocketWriteResponse(info, action, data);<br>        Log.d(TAG, <span class="hljs-string">&quot;onSocketWriteResponse: &quot;</span> + info + <span class="hljs-string">&quot;, &quot;</span> + action + <span class="hljs-string">&quot;, &quot;</span> + data);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPulseSend</span><span class="hljs-params">(ConnectionInfo info, IPulseSendable data)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">super</span>.onPulseSend(info, data);<br>        Log.d(TAG, <span class="hljs-string">&quot;onPulseSend: &quot;</span> + info + <span class="hljs-string">&quot;, &quot;</span> + data);<br>    &#125;<br>&#125;;<br>manager.connect();<br></code></pre></td></tr></table></figure></p>
+<p>首先创建Socket基础信息对象和连接管理对象</p>
+<pre><code class="lang-java">ConnectionInfo info = new ConnectionInfo(&quot;ip&quot;, port);
+IConnectionManager manager = OkSocket.open(info);
+</code></pre>
+<p>注册回调函数</p>
+<pre><code class="lang-java">manager.registerReceiver(new SocketActionAdapter() &#123;
+    @Override
+    public void onSocketIOThreadStart(String action)
+    &#123;
+        super.onSocketIOThreadStart(action);
+        Log.d(TAG, &quot;onSocketIOThreadStart: &quot; + action);
+    &#125;
+
+    @Override
+    public void onSocketIOThreadShutdown(String action, Exception e)
+    &#123;
+        super.onSocketIOThreadShutdown(action, e);
+        Log.d(TAG, &quot;onSocketIOThreadShutdown: &quot; + action + &quot;, &quot; + e);
+    &#125;
+
+    @Override
+    public void onSocketDisconnection(ConnectionInfo info, String action, Exception e)
+    &#123;
+        super.onSocketDisconnection(info, action, e);
+        Log.d(TAG, &quot;onSocketDisconnection: &quot; + info + &quot;, &quot; + action + &quot;, &quot; + e);
+    &#125;
+
+    @Override
+    public void onSocketConnectionSuccess(ConnectionInfo info, String action)
+    &#123;
+        super.onSocketConnectionSuccess(info, action);
+        Log.d(TAG, &quot;onSocketConnectionSuccess: &quot; + info + &quot;, &quot; + action);
+    &#125;
+
+    @Override
+    public void onSocketConnectionFailed(ConnectionInfo info, String action, Exception e)
+    &#123;
+        super.onSocketConnectionFailed(info, action, e);
+        Log.d(TAG, &quot;onSocketConnectionFailed: &quot; + info + &quot;, &quot; + action + &quot;, &quot; + e);
+    &#125;
+
+    @Override
+    public void onSocketReadResponse(ConnectionInfo info, String action, OriginalData data)
+    &#123;
+        super.onSocketReadResponse(info, action, data);
+        Log.d(TAG, &quot;onSocketReadResponse: &quot; + info + &quot;, &quot; + action + &quot;, &quot; + data);
+    &#125;
+
+    @Override
+    public void onSocketWriteResponse(ConnectionInfo info, String action, ISendable data)
+    &#123;
+        super.onSocketWriteResponse(info, action, data);
+        Log.d(TAG, &quot;onSocketWriteResponse: &quot; + info + &quot;, &quot; + action + &quot;, &quot; + data);
+    &#125;
+
+    @Override
+    public void onPulseSend(ConnectionInfo info, IPulseSendable data)
+    &#123;
+        super.onPulseSend(info, data);
+        Log.d(TAG, &quot;onPulseSend: &quot; + info + &quot;, &quot; + data);
+    &#125;
+&#125;;
+manager.connect();
+</code></pre>
 <p><strong><font color=red>注意:</font></strong><br>使用OkSocket框架的时候，接收和发送的数据包需要自定义结构。<br>OkSocket将发送和接收的数据包的结构定义如下：</p>
 <div class="table-container">
 <table>
@@ -263,11 +81,84 @@
 </tbody>
 </table>
 </div>
-<h5 id="自定义接收数据包的head、body的长度："><a href="#自定义接收数据包的head、body的长度：" class="headerlink" title="自定义接收数据包的head、body的长度："></a>自定义接收数据包的head、body的长度：</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 这段代码在测试的时候，写在注册回调函数之前是正确的，没有测试写在回调函数之后</span><br>OkSocketOptions.Builder okOptionsBuilder = <span class="hljs-keyword">new</span> OkSocketOptions.Builder(manager.getOption());<br>okOptionsBuilder.setReaderProtocol(<span class="hljs-keyword">new</span> IReaderProtocol() &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getHeaderLength</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getBodyLength</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] header, ByteOrder byteOrder)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;);<br>manager.option(okOptionsBuilder.build());<br></code></pre></td></tr></table></figure>
-<h5 id="发送数据包"><a href="#发送数据包" class="headerlink" title="发送数据包"></a>发送数据包</h5><p>OkSocket发送数据包的function只能传递实现了<code>ISendable</code>接口的类实体<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestSendData</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ISendable</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">TestSendData</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">byte</span>[] parse()<br>    &#123;<br>        <span class="hljs-comment">// 根据接收到的数据包的结构,构建byte数组</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">0</span>];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<h5 id="断开连接"><a href="#断开连接" class="headerlink" title="断开连接"></a>断开连接</h5><p>在注册了SocketActionAdapter的情况下，如果调用了<code>manager.disconnect();</code> ，会自动重新连接。因此，在Activity或者Service退出的时候，要在onDestroy方法中做如下处理：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">manager.unRegisterReceiver(socketActionAdapter);<br>manager.disconnect();<br><span class="hljs-keyword">super</span>.onDestroy();<br></code></pre></td></tr></table></figure></p>
+<h5 id="自定义接收数据包的head、body的长度："><a href="#自定义接收数据包的head、body的长度：" class="headerlink" title="自定义接收数据包的head、body的长度："></a>自定义接收数据包的head、body的长度：</h5><pre><code class="lang-java">// 这段代码在测试的时候，写在注册回调函数之前是正确的，没有测试写在回调函数之后
+OkSocketOptions.Builder okOptionsBuilder = new OkSocketOptions.Builder(manager.getOption());
+okOptionsBuilder.setReaderProtocol(new IReaderProtocol() &#123;
+    @Override
+    public int getHeaderLength()
+    &#123;
+        return 0;
+    &#125;
+
+    @Override
+    public int getBodyLength(byte[] header, ByteOrder byteOrder)
+    &#123;
+        return 0;
+    &#125;
+&#125;);
+manager.option(okOptionsBuilder.build());
+</code></pre>
+<h5 id="发送数据包"><a href="#发送数据包" class="headerlink" title="发送数据包"></a>发送数据包</h5><p>OkSocket发送数据包的function只能传递实现了<code>ISendable</code>接口的类实体</p>
+<pre><code class="lang-java">public class TestSendData implements ISendable &#123;
+    public TestSendData()
+    &#123;
+    &#125;
+
+    @Override
+    public byte[] parse()
+    &#123;
+        // 根据接收到的数据包的结构,构建byte数组
+        return new byte[0];
+    &#125;
+&#125;
+</code></pre>
+<h5 id="断开连接"><a href="#断开连接" class="headerlink" title="断开连接"></a>断开连接</h5><p>在注册了SocketActionAdapter的情况下，如果调用了<code>manager.disconnect();</code> ，会自动重新连接。因此，在Activity或者Service退出的时候，要在onDestroy方法中做如下处理：</p>
+<pre><code class="lang-java">manager.unRegisterReceiver(socketActionAdapter);
+manager.disconnect();
+super.onDestroy();
+</code></pre>
 <h5 id="心跳包的发送"><a href="#心跳包的发送" class="headerlink" title="心跳包的发送"></a>心跳包的发送</h5><p>在TCP长连接中，需要不断发送心跳包，确认TCP连接正常，若累积一定数量的心跳包没有返回，说明连接存异常，应重新建立连接。</p>
-<p>定义心跳数据包<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PulseData</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">IPulseSendable</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String str = <span class="hljs-string">&quot;pulse&quot;</span>;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">byte</span>[] parse() &#123;<br>        <span class="hljs-keyword">byte</span>[] body = str.getBytes(Charset.defaultCharset());<br>        ByteBuffer bb = ByteBuffer.allocate(<span class="hljs-number">4</span> + body.length);<br>        bb.order(ByteOrder.BIG_ENDIAN);<br>        bb.putInt(body.length);<br>        bb.put(body);<br>        <span class="hljs-keyword">return</span> bb.array();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><br>在连接成功的时候，给连接设置一个心跳管理器<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> IConnectionManager mManager;<br><span class="hljs-keyword">private</span> PulseData mPulseData = <span class="hljs-keyword">new</span> PulseData;<br><span class="hljs-comment">//...省略连接及设置回调的代码...</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onSocketConnectionSuccess</span><span class="hljs-params">(ConnectionInfo info, String action)</span> </span>&#123;<br>     <span class="hljs-comment">//连接成功其他操作...</span><br>     <span class="hljs-comment">//链式编程调用,给心跳管理器设置心跳数据,一个连接只有一个心跳管理器,因此数据只用设置一次,如果断开请再次设置.</span><br>     OkSocket.open(info)<br>        .getPulseManager()<br>        .setPulseSendable(mPulseData)<span class="hljs-comment">//只需要设置一次,下一次可以直接调用pulse()</span><br>        .pulse();<span class="hljs-comment">//开始心跳,开始心跳后,心跳管理器会自动进行心跳触发</span><br>&#125;<br></code></pre></td></tr></table></figure><br>OkSocket框架要求在发送出心跳包并接收到心跳包的回应的时候，需要进行“喂狗”操作。否则当超过一定次数的心跳发送，未得到喂狗操作后，狗将会将此次连接断开重连。喂狗操作如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//定义成员变量</span><br><span class="hljs-keyword">private</span> IConnectionManager mManager;<br><span class="hljs-comment">//当客户端收到消息后</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onSocketReadResponse</span><span class="hljs-params">(ConnectionInfo info, String action, OriginalData data)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span>(mManager != <span class="hljs-keyword">null</span> &amp;&amp; 是心跳返回包)&#123;<span class="hljs-comment">//是否是心跳返回包,需要解析服务器返回的数据才可知道</span><br>        <span class="hljs-comment">//喂狗操作</span><br>        mManager.getPulseManager().feed();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>定义心跳数据包</p>
+<pre><code class="lang-java">public class PulseData implements IPulseSendable &#123;
+    private String str = &quot;pulse&quot;;
+
+    @Override
+    public byte[] parse() &#123;
+        byte[] body = str.getBytes(Charset.defaultCharset());
+        ByteBuffer bb = ByteBuffer.allocate(4 + body.length);
+        bb.order(ByteOrder.BIG_ENDIAN);
+        bb.putInt(body.length);
+        bb.put(body);
+        return bb.array();
+    &#125;
+&#125;
+</code></pre>
+<p>在连接成功的时候，给连接设置一个心跳管理器</p>
+<pre><code class="lang-java">private IConnectionManager mManager;
+private PulseData mPulseData = new PulseData;
+//...省略连接及设置回调的代码...
+@Override
+public void onSocketConnectionSuccess(ConnectionInfo info, String action) &#123;
+     //连接成功其他操作...
+     //链式编程调用,给心跳管理器设置心跳数据,一个连接只有一个心跳管理器,因此数据只用设置一次,如果断开请再次设置.
+     OkSocket.open(info)
+        .getPulseManager()
+        .setPulseSendable(mPulseData)//只需要设置一次,下一次可以直接调用pulse()
+        .pulse();//开始心跳,开始心跳后,心跳管理器会自动进行心跳触发
+&#125;
+</code></pre>
+<p>OkSocket框架要求在发送出心跳包并接收到心跳包的回应的时候，需要进行“喂狗”操作。否则当超过一定次数的心跳发送，未得到喂狗操作后，狗将会将此次连接断开重连。喂狗操作如下：</p>
+<pre><code class="lang-java">//定义成员变量
+private IConnectionManager mManager;
+//当客户端收到消息后
+@Override
+public void onSocketReadResponse(ConnectionInfo info, String action, OriginalData data) &#123;
+    if(mManager != null &amp;&amp; 是心跳返回包)&#123;//是否是心跳返回包,需要解析服务器返回的数据才可知道
+        //喂狗操作
+        mManager.getPulseManager().feed();
+    &#125;
+&#125;
+</code></pre>
 <h5 id="OkSocket参配选项及回调说明-摘自OkSocket原作者的说明"><a href="#OkSocket参配选项及回调说明-摘自OkSocket原作者的说明" class="headerlink" title="OkSocket参配选项及回调说明(摘自OkSocket原作者的说明)"></a><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8ee3ee766265">OkSocket参配选项及回调说明(摘自OkSocket原作者的说明)</a></h5><ul>
 <li>OkSocketOptions<ul>
 <li>Socket通讯模式<code>mIOThreadMode</code></li>
@@ -298,282 +189,285 @@
 </li>
 </ul>
 <hr>
-<h3 id="String和byte数组互相转换"><a href="#String和byte数组互相转换" class="headerlink" title="String和byte数组互相转换"></a>String和byte数组互相转换</h3><h5 id="String转byte数组"><a href="#String转byte数组" class="headerlink" title="String转byte数组"></a>String转byte数组</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">byte</span>[] data = string.getBytes(StandardCharsets.UTF_8);<br></code></pre></td></tr></table></figure>
-<h5 id="byte数组转String"><a href="#byte数组转String" class="headerlink" title="byte数组转String"></a>byte数组转String</h5><h2 id=""><a href="#" class="headerlink" title=""></a><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">byte</span>[] dataByte = ...;<br>String msg = <span class="hljs-keyword">new</span> String(dataByte, StandardCharsets.UTF_8));<br></code></pre></td></tr></table></figure></h2><h3 id="byte数组拼接"><a href="#byte数组拼接" class="headerlink" title="byte数组拼接"></a>byte数组拼接</h3><h2 id="-1"><a href="#-1" class="headerlink" title=""></a><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">byte</span>[] mergeByteArray(<span class="hljs-keyword">byte</span>[] byte_1, <span class="hljs-keyword">byte</span>[] byte_2)&#123;<br>    <span class="hljs-keyword">byte</span>[] byte_3 = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[byte_1.length+byte_2.length];<br>    System.arraycopy(byte_1, <span class="hljs-number">0</span>, byte_3, <span class="hljs-number">0</span>, byte_1.length);<br>    System.arraycopy(byte_2, <span class="hljs-number">0</span>, byte_3, byte_1.length, byte_2.length);<br>    <span class="hljs-keyword">return</span> byte_3;<br>&#125;<br></code></pre></td></tr></table></figure></h2><h3 id="十进制数字和byte数组相互转换"><a href="#十进制数字和byte数组相互转换" class="headerlink" title="十进制数字和byte数组相互转换"></a>十进制数字和byte数组相互转换</h3><p>从网上找到了一个十进制数字和byte数组相互转换的工具<a target="_blank" rel="noopener" href="https://blog.csdn.net/aotian16/article/details/9859213">ByteUtil</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ByteUtil</span> </span>&#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * int整数转换为4字节的byte数组</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> i 整数</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> byte数组</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">byte</span>[] intToByte4(<span class="hljs-keyword">int</span> i) &#123;<br>        <span class="hljs-keyword">byte</span>[] targets = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">4</span>];<br>        targets[<span class="hljs-number">3</span>] = (<span class="hljs-keyword">byte</span>) (i &amp; <span class="hljs-number">0xFF</span>);<br>        targets[<span class="hljs-number">2</span>] = (<span class="hljs-keyword">byte</span>) (i &gt;&gt; <span class="hljs-number">8</span> &amp; <span class="hljs-number">0xFF</span>);<br>        targets[<span class="hljs-number">1</span>] = (<span class="hljs-keyword">byte</span>) (i &gt;&gt; <span class="hljs-number">16</span> &amp; <span class="hljs-number">0xFF</span>);<br>        targets[<span class="hljs-number">0</span>] = (<span class="hljs-keyword">byte</span>) (i &gt;&gt; <span class="hljs-number">24</span> &amp; <span class="hljs-number">0xFF</span>);<br>        <span class="hljs-keyword">return</span> targets;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * long整数转换为8字节的byte数组</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> lo long整数</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> byte数组</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">byte</span>[] longToByte8(<span class="hljs-keyword">long</span> lo) &#123;<br>        <span class="hljs-keyword">byte</span>[] targets = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">8</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">8</span>; i++) &#123;<br>            <span class="hljs-keyword">int</span> offset = (targets.length - <span class="hljs-number">1</span> - i) * <span class="hljs-number">8</span>;<br>            targets[i] = (<span class="hljs-keyword">byte</span>) ((lo &gt;&gt;&gt; offset) &amp; <span class="hljs-number">0xFF</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> targets;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * short整数转换为2字节的byte数组</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> s short整数</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> byte数组</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">byte</span>[] unsignedShortToByte2(<span class="hljs-keyword">int</span> s) &#123;<br>        <span class="hljs-keyword">byte</span>[] targets = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">2</span>];<br>        targets[<span class="hljs-number">0</span>] = (<span class="hljs-keyword">byte</span>) (s &gt;&gt; <span class="hljs-number">8</span> &amp; <span class="hljs-number">0xFF</span>);<br>        targets[<span class="hljs-number">1</span>] = (<span class="hljs-keyword">byte</span>) (s &amp; <span class="hljs-number">0xFF</span>);<br>        <span class="hljs-keyword">return</span> targets;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * byte数组转换为无符号short整数</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> bytes byte数组</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> short整数</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">byte2ToUnsignedShort</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] bytes)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> byte2ToUnsignedShort(bytes, <span class="hljs-number">0</span>);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * byte数组转换为无符号short整数</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> bytes byte数组</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> off   开始位置</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> short整数</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">byte2ToUnsignedShort</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] bytes, <span class="hljs-keyword">int</span> off)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> high = bytes[off];<br>        <span class="hljs-keyword">int</span> low = bytes[off + <span class="hljs-number">1</span>];<br>        <span class="hljs-keyword">return</span> (high &lt;&lt; <span class="hljs-number">8</span> &amp; <span class="hljs-number">0xFF00</span>) | (low &amp; <span class="hljs-number">0xFF</span>);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * byte数组转换为int整数</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> bytes byte数组</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> off   开始位置</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> int整数</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">byte4ToInt</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] bytes, <span class="hljs-keyword">int</span> off)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> b0 = bytes[off] &amp; <span class="hljs-number">0xFF</span>;<br>        <span class="hljs-keyword">int</span> b1 = bytes[off + <span class="hljs-number">1</span>] &amp; <span class="hljs-number">0xFF</span>;<br>        <span class="hljs-keyword">int</span> b2 = bytes[off + <span class="hljs-number">2</span>] &amp; <span class="hljs-number">0xFF</span>;<br>        <span class="hljs-keyword">int</span> b3 = bytes[off + <span class="hljs-number">3</span>] &amp; <span class="hljs-number">0xFF</span>;<br>        <span class="hljs-keyword">return</span> (b0 &lt;&lt; <span class="hljs-number">24</span>) | (b1 &lt;&lt; <span class="hljs-number">16</span>) | (b2 &lt;&lt; <span class="hljs-number">8</span>) | b3;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h3 id="String和byte数组互相转换"><a href="#String和byte数组互相转换" class="headerlink" title="String和byte数组互相转换"></a>String和byte数组互相转换</h3><h5 id="String转byte数组"><a href="#String转byte数组" class="headerlink" title="String转byte数组"></a>String转byte数组</h5><pre><code class="lang-java">byte[] data = string.getBytes(StandardCharsets.UTF_8);
+</code></pre>
+<h5 id="byte数组转String"><a href="#byte数组转String" class="headerlink" title="byte数组转String"></a>byte数组转String</h5><pre><code class="lang-java">byte[] dataByte = ...;
+String msg = new String(dataByte, StandardCharsets.UTF_8));
+</code></pre>
 <hr>
-<h3 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h3><h5 id="一个使用OkSocket通讯的Activity样例"><a href="#一个使用OkSocket通讯的Activity样例" class="headerlink" title="一个使用OkSocket通讯的Activity样例"></a>一个使用OkSocket通讯的Activity样例</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Activity</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> String TAG = <span class="hljs-string">&quot;MainActivity&quot;</span>;<br><br>    <span class="hljs-keyword">private</span> Button btnSend;<br>    IConnectionManager manager;<br>    SocketActionAdapter socketActionAdapter;<br>    <span class="hljs-keyword">private</span> PulseData pulseData = <span class="hljs-keyword">new</span> PulseData();<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);<br>        setContentView(R.layout.activity_main);<br>        btnSend = findViewById(R.id.btn_send);<br><br>        ConnectionInfo info = <span class="hljs-keyword">new</span> ConnectionInfo(<span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-number">8886</span>);<br>        manager = OkSocket.open(info);<br><br>        <span class="hljs-comment">// 自定义数据包结构</span><br>        OkSocketOptions.Builder okOptionsBuilder = <span class="hljs-keyword">new</span> OkSocketOptions.Builder(manager.getOption());<br>        okOptionsBuilder.setPulseFeedLoseTimes(<span class="hljs-number">1</span>);<br>        okOptionsBuilder.setPulseFrequency(<span class="hljs-number">1000</span>);<br><span class="hljs-comment">//        okOptionsBuilder.setReaderProtocol(new IReaderProtocol() &#123;</span><br><span class="hljs-comment">//            @Override</span><br><span class="hljs-comment">//            public int getHeaderLength()</span><br><span class="hljs-comment">//            &#123;</span><br><span class="hljs-comment">//                return 4;</span><br><span class="hljs-comment">//            &#125;</span><br><span class="hljs-comment">//</span><br><span class="hljs-comment">//            @Override</span><br><span class="hljs-comment">//            public int getBodyLength(byte[] header, ByteOrder byteOrder)</span><br><span class="hljs-comment">//            &#123;</span><br><span class="hljs-comment">//                return 30;</span><br><span class="hljs-comment">//            &#125;</span><br><span class="hljs-comment">//        &#125;);</span><br><span class="hljs-comment">//        manager.option(okOptionsBuilder.build());</span><br><br>        socketActionAdapter = <span class="hljs-keyword">new</span> SocketActionAdapter() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onSocketIOThreadStart</span><span class="hljs-params">(String action)</span></span><br><span class="hljs-function">            </span>&#123;<br>                <span class="hljs-keyword">super</span>.onSocketIOThreadStart(action);<br>                Log.d(TAG, <span class="hljs-string">&quot;onSocketIOThreadStart: &quot;</span> + action);<br>            &#125;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onSocketIOThreadShutdown</span><span class="hljs-params">(String action, Exception e)</span></span><br><span class="hljs-function">            </span>&#123;<br>                <span class="hljs-keyword">super</span>.onSocketIOThreadShutdown(action, e);<br>                Log.d(TAG, <span class="hljs-string">&quot;onSocketIOThreadShutdown: &quot;</span> + action + <span class="hljs-string">&quot;, &quot;</span> + e);<br>            &#125;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onSocketDisconnection</span><span class="hljs-params">(ConnectionInfo info, String action, Exception e)</span></span><br><span class="hljs-function">            </span>&#123;<br>                <span class="hljs-keyword">super</span>.onSocketDisconnection(info, action, e);<br>                Log.d(TAG, <span class="hljs-string">&quot;onSocketDisconnection: &quot;</span> + info + <span class="hljs-string">&quot;, &quot;</span> + action + <span class="hljs-string">&quot;, &quot;</span> + e);<br>                manager.connect();<br>            &#125;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onSocketConnectionSuccess</span><span class="hljs-params">(ConnectionInfo info, String action)</span></span><br><span class="hljs-function">            </span>&#123;<br>                <span class="hljs-keyword">super</span>.onSocketConnectionSuccess(info, action);<br>                Log.d(TAG, <span class="hljs-string">&quot;onSocketConnectionSuccess: &quot;</span> + info + <span class="hljs-string">&quot;, &quot;</span> + action);<br>                manager.getPulseManager().setPulseSendable(pulseData).pulse();<br>            &#125;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onSocketConnectionFailed</span><span class="hljs-params">(ConnectionInfo info, String action, Exception e)</span></span><br><span class="hljs-function">            </span>&#123;<br>                <span class="hljs-keyword">super</span>.onSocketConnectionFailed(info, action, e);<br>                Log.d(TAG, <span class="hljs-string">&quot;onSocketConnectionFailed: &quot;</span> + info + <span class="hljs-string">&quot;, &quot;</span> + action + <span class="hljs-string">&quot;, &quot;</span> + e);<br>            &#125;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onSocketReadResponse</span><span class="hljs-params">(ConnectionInfo info, String action, OriginalData data)</span></span><br><span class="hljs-function">            </span>&#123;<br>                <span class="hljs-keyword">super</span>.onSocketReadResponse(info, action, data);<br>                Log.d(TAG, <span class="hljs-string">&quot;onSocketReadResponse: &quot;</span> + info + <span class="hljs-string">&quot;, &quot;</span> + action + <span class="hljs-string">&quot;, &quot;</span> + data);<br>                String content = <span class="hljs-keyword">new</span> String(data.getBodyBytes(), StandardCharsets.UTF_8);<br>                Log.d(TAG, <span class="hljs-string">&quot;onSocketReadResponse: &quot;</span> + content);<br>                <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;pulse&quot;</span>.equals(content))<br>                &#123;<br>                    manager.getPulseManager().feed();<br>                    Log.d(TAG, <span class="hljs-string">&quot;onSocketReadResponse: feed&quot;</span>);<br>                &#125;<br>            &#125;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onSocketWriteResponse</span><span class="hljs-params">(ConnectionInfo info, String action, ISendable data)</span></span><br><span class="hljs-function">            </span>&#123;<br>                <span class="hljs-keyword">super</span>.onSocketWriteResponse(info, action, data);<br>                Log.d(TAG, <span class="hljs-string">&quot;onSocketWriteResponse: &quot;</span> + info + <span class="hljs-string">&quot;, &quot;</span> + action + <span class="hljs-string">&quot;, &quot;</span> + data);<br>            &#125;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPulseSend</span><span class="hljs-params">(ConnectionInfo info, IPulseSendable data)</span></span><br><span class="hljs-function">            </span>&#123;<br>                <span class="hljs-keyword">super</span>.onPulseSend(info, data);<br>                Log.d(TAG, <span class="hljs-string">&quot;onPulseSend: &quot;</span> + info + <span class="hljs-string">&quot;, &quot;</span> + data);<br>            &#125;<br>        &#125;;<br>        manager.registerReceiver(socketActionAdapter);<br>        manager.connect();<br><br><br>        btnSend.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View v)</span></span><br><span class="hljs-function">            </span>&#123;<br>                manager.send(<span class="hljs-keyword">new</span> TestSendData());<br>            &#125;<br>        &#125;);<br>    &#125;<br><br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onDestroy</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        manager.unRegisterReceiver(socketActionAdapter);<br>        manager.disconnect();<br>        <span class="hljs-keyword">super</span>.onDestroy();<br>    &#125;<br><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ABC</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ISendable</span> </span>&#123;<br><br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">byte</span>[] parse()<br>        &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">0</span>];<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestSendData</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ISendable</span> </span>&#123;<br>        <span class="hljs-keyword">private</span> String str = <span class="hljs-string">&quot;&quot;</span>;<br><br>        TestSendData()<br>        &#123;<br>            JSONObject jsonObject = <span class="hljs-keyword">new</span> JSONObject();<br>            <span class="hljs-keyword">try</span><br>            &#123;<br>                jsonObject.put(<span class="hljs-string">&quot;cmd&quot;</span>, <span class="hljs-number">14</span>);<br>                jsonObject.put(<span class="hljs-string">&quot;data&quot;</span>, <span class="hljs-string">&quot;&#123;x:2,y:1&#125;&quot;</span>);<br>                str = jsonObject.toString() + <span class="hljs-string">&quot;\n&quot;</span>;<br>            &#125; <span class="hljs-keyword">catch</span> (JSONException e)<br>            &#123;<br>                e.printStackTrace();<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">byte</span>[] parse()<br>        &#123;<br>            <span class="hljs-comment">//根据服务器的解析规则,构建byte数组</span><br>            <span class="hljs-keyword">byte</span>[] body = str.getBytes(Charset.defaultCharset());<br>            ByteBuffer bb = ByteBuffer.allocate(<span class="hljs-number">4</span> + body.length);<br>            bb.order(ByteOrder.BIG_ENDIAN);<br>            bb.putInt(body.length);<br>            bb.put(body);<br><span class="hljs-comment">//            return bb.array();</span><br>            <span class="hljs-keyword">return</span> str.getBytes(Charset.forName(<span class="hljs-string">&quot;UTF-8&quot;</span>));<br>        &#125;<br>    &#125;<br><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PulseData</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">IPulseSendable</span> </span>&#123;<br>        <span class="hljs-keyword">private</span> String str = <span class="hljs-string">&quot;pulse\n&quot;</span>;<br><br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">byte</span>[] parse() &#123;<br>            <span class="hljs-keyword">byte</span>[] body = str.getBytes(Charset.defaultCharset());<br>            ByteBuffer bb = ByteBuffer.allocate(<span class="hljs-number">4</span> + body.length);<br>            bb.order(ByteOrder.BIG_ENDIAN);<br>            bb.putInt(body.length);<br>            bb.put(body);<br>            <span class="hljs-keyword">return</span> bb.array();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/Coding/">Coding</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/Android/">Android</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Socket/">Socket</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2019/07/03/bert/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">BERT:Pre-training of Deep Bidirectional Transformers for Language Understanding</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2019/06/23/Android%E8%87%AA%E5%8A%A8%E4%B8%8B%E8%BD%BD%E6%9B%B4%E6%96%B0%E5%B9%B6%E9%9D%99%E9%BB%98%E5%AE%89%E8%A3%85/">
-                        <span class="hidden-mobile">Android自动下载更新并静默安装</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-          </article>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
-    
-
-    
-      <a id="scroll-top-button" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-    
-
-    
-  </main>
-
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-    
-  </div>
-  
-  <div class="statistics">
-    
-    
-
-    
-      
-        <!-- 不蒜子统计PV -->
-        <span id="busuanzi_container_site_pv" style="display: none">
-            总访问量 
-            <span id="busuanzi_value_site_pv"></span>
-             次
-          </span>
-      
-      
-        <!-- 不蒜子统计UV -->
-        <span id="busuanzi_container_site_uv" style="display: none">
-            总访客数 
-            <span id="busuanzi_value_site_uv"></span>
-             人
-          </span>
-      
-    
-  </div>
-
-
-  
-  <!-- 备案信息 -->
-  <div class="beian">
-    <span>
-      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
-        沪ICP备2021012484号
-      </a>
-    </span>
-    
-  </div>
-
-
-  
-</footer>
-
-
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-  <script defer src="/js/leancloud.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-      typing(title)
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</body>
-</html>
+<h3 id="byte数组拼接"><a href="#byte数组拼接" class="headerlink" title="byte数组拼接"></a>byte数组拼接</h3><pre><code class="lang-java">public static byte[] mergeByteArray(byte[] byte_1, byte[] byte_2)&#123;
+    byte[] byte_3 = new byte[byte_1.length+byte_2.length];
+    System.arraycopy(byte_1, 0, byte_3, 0, byte_1.length);
+    System.arraycopy(byte_2, 0, byte_3, byte_1.length, byte_2.length);
+    return byte_3;
+&#125;
+</code></pre>
+<hr>
+<h3 id="十进制数字和byte数组相互转换"><a href="#十进制数字和byte数组相互转换" class="headerlink" title="十进制数字和byte数组相互转换"></a>十进制数字和byte数组相互转换</h3><p>从网上找到了一个十进制数字和byte数组相互转换的工具<a target="_blank" rel="noopener" href="https://blog.csdn.net/aotian16/article/details/9859213">ByteUtil</a></p>
+<pre><code class="lang-java">public class ByteUtil &#123;
+    /**
+     * int整数转换为4字节的byte数组
+     *
+     * @param i 整数
+     * @return byte数组
+     */
+    public static byte[] intToByte4(int i) &#123;
+        byte[] targets = new byte[4];
+        targets[3] = (byte) (i &amp; 0xFF);
+        targets[2] = (byte) (i &gt;&gt; 8 &amp; 0xFF);
+        targets[1] = (byte) (i &gt;&gt; 16 &amp; 0xFF);
+        targets[0] = (byte) (i &gt;&gt; 24 &amp; 0xFF);
+        return targets;
+    &#125;
+
+    /**
+     * long整数转换为8字节的byte数组
+     *
+     * @param lo long整数
+     * @return byte数组
+     */
+    public static byte[] longToByte8(long lo) &#123;
+        byte[] targets = new byte[8];
+        for (int i = 0; i &lt; 8; i++) &#123;
+            int offset = (targets.length - 1 - i) * 8;
+            targets[i] = (byte) ((lo &gt;&gt;&gt; offset) &amp; 0xFF);
+        &#125;
+        return targets;
+    &#125;
+
+    /**
+     * short整数转换为2字节的byte数组
+     *
+     * @param s short整数
+     * @return byte数组
+     */
+    public static byte[] unsignedShortToByte2(int s) &#123;
+        byte[] targets = new byte[2];
+        targets[0] = (byte) (s &gt;&gt; 8 &amp; 0xFF);
+        targets[1] = (byte) (s &amp; 0xFF);
+        return targets;
+    &#125;
+
+    /**
+     * byte数组转换为无符号short整数
+     *
+     * @param bytes byte数组
+     * @return short整数
+     */
+    public static int byte2ToUnsignedShort(byte[] bytes) &#123;
+        return byte2ToUnsignedShort(bytes, 0);
+    &#125;
+
+    /**
+     * byte数组转换为无符号short整数
+     *
+     * @param bytes byte数组
+     * @param off   开始位置
+     * @return short整数
+     */
+    public static int byte2ToUnsignedShort(byte[] bytes, int off) &#123;
+        int high = bytes[off];
+        int low = bytes[off + 1];
+        return (high &lt;&lt; 8 &amp; 0xFF00) | (low &amp; 0xFF);
+    &#125;
+
+    /**
+     * byte数组转换为int整数
+     *
+     * @param bytes byte数组
+     * @param off   开始位置
+     * @return int整数
+     */
+    public static int byte4ToInt(byte[] bytes, int off) &#123;
+        int b0 = bytes[off] &amp; 0xFF;
+        int b1 = bytes[off + 1] &amp; 0xFF;
+        int b2 = bytes[off + 2] &amp; 0xFF;
+        int b3 = bytes[off + 3] &amp; 0xFF;
+        return (b0 &lt;&lt; 24) | (b1 &lt;&lt; 16) | (b2 &lt;&lt; 8) | b3;
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h3 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h3><h5 id="一个使用OkSocket通讯的Activity样例"><a href="#一个使用OkSocket通讯的Activity样例" class="headerlink" title="一个使用OkSocket通讯的Activity样例"></a>一个使用OkSocket通讯的Activity样例</h5><pre><code class="lang-java">public class MainActivity extends Activity &#123;
+    private final static String TAG = &quot;MainActivity&quot;;
+
+    private Button btnSend;
+    IConnectionManager manager;
+    SocketActionAdapter socketActionAdapter;
+    private PulseData pulseData = new PulseData();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    &#123;
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        btnSend = findViewById(R.id.btn_send);
+
+        ConnectionInfo info = new ConnectionInfo(&quot;localhost&quot;, 8886);
+        manager = OkSocket.open(info);
+
+        // 自定义数据包结构
+        OkSocketOptions.Builder okOptionsBuilder = new OkSocketOptions.Builder(manager.getOption());
+        okOptionsBuilder.setPulseFeedLoseTimes(1);
+        okOptionsBuilder.setPulseFrequency(1000);
+//        okOptionsBuilder.setReaderProtocol(new IReaderProtocol() &#123;
+//            @Override
+//            public int getHeaderLength()
+//            &#123;
+//                return 4;
+//            &#125;
+//
+//            @Override
+//            public int getBodyLength(byte[] header, ByteOrder byteOrder)
+//            &#123;
+//                return 30;
+//            &#125;
+//        &#125;);
+//        manager.option(okOptionsBuilder.build());
+
+        socketActionAdapter = new SocketActionAdapter() &#123;
+            @Override
+            public void onSocketIOThreadStart(String action)
+            &#123;
+                super.onSocketIOThreadStart(action);
+                Log.d(TAG, &quot;onSocketIOThreadStart: &quot; + action);
+            &#125;
+
+            @Override
+            public void onSocketIOThreadShutdown(String action, Exception e)
+            &#123;
+                super.onSocketIOThreadShutdown(action, e);
+                Log.d(TAG, &quot;onSocketIOThreadShutdown: &quot; + action + &quot;, &quot; + e);
+            &#125;
+
+            @Override
+            public void onSocketDisconnection(ConnectionInfo info, String action, Exception e)
+            &#123;
+                super.onSocketDisconnection(info, action, e);
+                Log.d(TAG, &quot;onSocketDisconnection: &quot; + info + &quot;, &quot; + action + &quot;, &quot; + e);
+                manager.connect();
+            &#125;
+
+            @Override
+            public void onSocketConnectionSuccess(ConnectionInfo info, String action)
+            &#123;
+                super.onSocketConnectionSuccess(info, action);
+                Log.d(TAG, &quot;onSocketConnectionSuccess: &quot; + info + &quot;, &quot; + action);
+                manager.getPulseManager().setPulseSendable(pulseData).pulse();
+            &#125;
+
+            @Override
+            public void onSocketConnectionFailed(ConnectionInfo info, String action, Exception e)
+            &#123;
+                super.onSocketConnectionFailed(info, action, e);
+                Log.d(TAG, &quot;onSocketConnectionFailed: &quot; + info + &quot;, &quot; + action + &quot;, &quot; + e);
+            &#125;
+
+            @Override
+            public void onSocketReadResponse(ConnectionInfo info, String action, OriginalData data)
+            &#123;
+                super.onSocketReadResponse(info, action, data);
+                Log.d(TAG, &quot;onSocketReadResponse: &quot; + info + &quot;, &quot; + action + &quot;, &quot; + data);
+                String content = new String(data.getBodyBytes(), StandardCharsets.UTF_8);
+                Log.d(TAG, &quot;onSocketReadResponse: &quot; + content);
+                if (&quot;pulse&quot;.equals(content))
+                &#123;
+                    manager.getPulseManager().feed();
+                    Log.d(TAG, &quot;onSocketReadResponse: feed&quot;);
+                &#125;
+            &#125;
+
+            @Override
+            public void onSocketWriteResponse(ConnectionInfo info, String action, ISendable data)
+            &#123;
+                super.onSocketWriteResponse(info, action, data);
+                Log.d(TAG, &quot;onSocketWriteResponse: &quot; + info + &quot;, &quot; + action + &quot;, &quot; + data);
+            &#125;
+
+            @Override
+            public void onPulseSend(ConnectionInfo info, IPulseSendable data)
+            &#123;
+                super.onPulseSend(info, data);
+                Log.d(TAG, &quot;onPulseSend: &quot; + info + &quot;, &quot; + data);
+            &#125;
+        &#125;;
+        manager.registerReceiver(socketActionAdapter);
+        manager.connect();
+
+
+        btnSend.setOnClickListener(new View.OnClickListener() &#123;
+            @Override
+            public void onClick(View v)
+            &#123;
+                manager.send(new TestSendData());
+            &#125;
+        &#125;);
+    &#125;
+
+
+    @Override
+    public void onDestroy()
+    &#123;
+        manager.unRegisterReceiver(socketActionAdapter);
+        manager.disconnect();
+        super.onDestroy();
+    &#125;
+
+
+    public class ABC implements ISendable &#123;
+
+        @Override
+        public byte[] parse()
+        &#123;
+            return new byte[0];
+        &#125;
+    &#125;
+
+    public class TestSendData implements ISendable &#123;
+        private String str = &quot;&quot;;
+
+        TestSendData()
+        &#123;
+            JSONObject jsonObject = new JSONObject();
+            try
+            &#123;
+                jsonObject.put(&quot;cmd&quot;, 14);
+                jsonObject.put(&quot;data&quot;, &quot;&#123;x:2,y:1&#125;&quot;);
+                str = jsonObject.toString() + &quot;\n&quot;;
+            &#125; catch (JSONException e)
+            &#123;
+                e.printStackTrace();
+            &#125;
+        &#125;
+
+        @Override
+        public byte[] parse()
+        &#123;
+            //根据服务器的解析规则,构建byte数组
+            byte[] body = str.getBytes(Charset.defaultCharset());
+            ByteBuffer bb = ByteBuffer.allocate(4 + body.length);
+            bb.order(ByteOrder.BIG_ENDIAN);
+            bb.putInt(body.length);
+            bb.put(body);
+//            return bb.array();
+            return str.getBytes(Charset.forName(&quot;UTF-8&quot;));
+        &#125;
+    &#125;
+
+
+    public class PulseData implements IPulseSendable &#123;
+        private String str = &quot;pulse\n&quot;;
+
+        @Override
+        public byte[] parse() &#123;
+            byte[] body = str.getBytes(Charset.defaultCharset());
+            ByteBuffer bb = ByteBuffer.allocate(4 + body.length);
+            bb.order(ByteOrder.BIG_ENDIAN);
+            bb.putInt(body.length);
+            bb.put(body);
+            return bb.array();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+</article></div></main><div class="nav-wrap"><div class="nav"><button class="site-nav"><div class="navicon"></div></button><ul class="nav_items"><li class="nav_item"><a class="nav-page" href="/#publications"> Publications</a></li><li class="nav_item"><a class="nav-page" href="/"> About</a></li></ul></div><div class="cd-top"><i class="fa fa-arrow-up" aria-hidden="true"></i></div></div><footer id="page_footer"><div class="footer_wrap"><div class="copyright">&copy;2023 - 2024 by Zhen Qin</div><div class="theme-info">Powered by <a target="_blank" href="https://hexo.io" rel="nofollow noopener">Hexo</a> & <a target="_blank" href="https://github.com/PhosphorW/hexo-theme-academia" rel="nofollow noopener">Academia Theme</a></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery-pjax@latest/jquery.pjax.min.js"></script><script src="/js/main.js"></script></body></html>
