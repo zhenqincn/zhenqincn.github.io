@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Federated Learning | Hugo Academic CV Theme</title>
-    <link>http://localhost:1313/tags/federated-learning/</link>
-      <atom:link href="http://localhost:1313/tags/federated-learning/index.xml" rel="self" type="application/rss+xml" />
+    <title>Federated Learning | Zhen Qin</title>
+    <link>httpss://zhenqincn.github.io/tags/federated-learning/</link>
+      <atom:link href="httpss://zhenqincn.github.io/tags/federated-learning/index.xml" rel="self" type="application/rss+xml" />
     <description>Federated Learning</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 25 Jul 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
+      <url>httpss://zhenqincn.github.io/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
       <title>Federated Learning</title>
-      <link>http://localhost:1313/tags/federated-learning/</link>
+      <link>httpss://zhenqincn.github.io/tags/federated-learning/</link>
     </image>
     
     <item>
       <title>Federated Full-Parameter Tuning of Billion-Sized Language Models with Communication Cost under 18 Kilobytes</title>
-      <link>http://localhost:1313/publication/icml2024-full-tuning/</link>
+      <link>httpss://zhenqincn.github.io/publication/icml2024-full-tuning/</link>
       <pubDate>Thu, 25 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/icml2024-full-tuning/</guid>
+      <guid>httpss://zhenqincn.github.io/publication/icml2024-full-tuning/</guid>
       <description>&lt;!-- 
 
 
@@ -55,9 +55,9 @@ Add the publication&#39;s **full text** or **supplementary notes** here. You can
     
     <item>
       <title>BlockDFL: A Blockchain-based Fully Decentralized Peer-to-Peer Federated Learning Framework</title>
-      <link>http://localhost:1313/publication/www2024-p2p-fl/</link>
+      <link>httpss://zhenqincn.github.io/publication/www2024-p2p-fl/</link>
       <pubDate>Fri, 17 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/www2024-p2p-fl/</guid>
+      <guid>httpss://zhenqincn.github.io/publication/www2024-p2p-fl/</guid>
       <description>&lt;!-- 
 
 
@@ -96,9 +96,9 @@ Add the publication&#39;s **full text** or **supplementary notes** here. You can
     
     <item>
       <title>Resisting Backdoor Attacks in Federated Learning via Bidirectional Elections and Individual Perspective</title>
-      <link>http://localhost:1313/publication/aaai2024-backdoor-fl/</link>
+      <link>httpss://zhenqincn.github.io/publication/aaai2024-backdoor-fl/</link>
       <pubDate>Wed, 28 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/aaai2024-backdoor-fl/</guid>
+      <guid>httpss://zhenqincn.github.io/publication/aaai2024-backdoor-fl/</guid>
       <description>&lt;!-- 
 
 
@@ -137,9 +137,9 @@ Add the publication&#39;s **full text** or **supplementary notes** here. You can
     
     <item>
       <title>FedAPEN: Personalized Cross-silo Federated Learning with Adaptability to Statistical Heterogeneity</title>
-      <link>http://localhost:1313/publication/kdd2023-adaptive-fl/</link>
+      <link>httpss://zhenqincn.github.io/publication/kdd2023-adaptive-fl/</link>
       <pubDate>Mon, 07 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/kdd2023-adaptive-fl/</guid>
+      <guid>httpss://zhenqincn.github.io/publication/kdd2023-adaptive-fl/</guid>
       <description>&lt;!-- 
 
 

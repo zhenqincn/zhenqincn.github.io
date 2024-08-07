@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Large Language Models | Hugo Academic CV Theme</title>
-    <link>http://localhost:1313/tags/large-language-models/</link>
-      <atom:link href="http://localhost:1313/tags/large-language-models/index.xml" rel="self" type="application/rss+xml" />
+    <title>Large Language Models | Zhen Qin</title>
+    <link>httpss://zhenqincn.github.io/tags/large-language-models/</link>
+      <atom:link href="httpss://zhenqincn.github.io/tags/large-language-models/index.xml" rel="self" type="application/rss+xml" />
     <description>Large Language Models</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 25 Jul 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:1313/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
+      <url>httpss://zhenqincn.github.io/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
       <title>Large Language Models</title>
-      <link>http://localhost:1313/tags/large-language-models/</link>
+      <link>httpss://zhenqincn.github.io/tags/large-language-models/</link>
     </image>
     
     <item>
       <title>Federated Full-Parameter Tuning of Billion-Sized Language Models with Communication Cost under 18 Kilobytes</title>
-      <link>http://localhost:1313/publication/icml2024-full-tuning/</link>
+      <link>httpss://zhenqincn.github.io/publication/icml2024-full-tuning/</link>
       <pubDate>Thu, 25 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/icml2024-full-tuning/</guid>
+      <guid>httpss://zhenqincn.github.io/publication/icml2024-full-tuning/</guid>
       <description>&lt;!-- 
 
 
@@ -55,9 +55,9 @@ Add the publication&#39;s **full text** or **supplementary notes** here. You can
     
     <item>
       <title>The Synergy between Data and Multi-Modal Large Language Models: A Survey from Co-Development Perspective</title>
-      <link>http://localhost:1313/publication/arxiv2407-mllm-survey/</link>
+      <link>httpss://zhenqincn.github.io/publication/arxiv2407-mllm-survey/</link>
       <pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/publication/arxiv2407-mllm-survey/</guid>
+      <guid>httpss://zhenqincn.github.io/publication/arxiv2407-mllm-survey/</guid>
       <description>&lt;!-- 
 This work is driven by the results in my [previous paper](/publication/conference-paper/) on LLMs.
 
