@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Non-IID | Zhen Qin</title>
-    <link>httpss://zhenqincn.github.io/tags/non-iid/</link>
-      <atom:link href="httpss://zhenqincn.github.io/tags/non-iid/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://zhenqincn.github.io/tags/non-iid/</link>
+      <atom:link href="https://zhenqincn.github.io/tags/non-iid/index.xml" rel="self" type="application/rss+xml" />
     <description>Non-IID</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 28 Feb 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>httpss://zhenqincn.github.io/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
+      <url>https://zhenqincn.github.io/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
       <title>Non-IID</title>
-      <link>httpss://zhenqincn.github.io/tags/non-iid/</link>
+      <link>https://zhenqincn.github.io/tags/non-iid/</link>
     </image>
     
     <item>
       <title>Resisting Backdoor Attacks in Federated Learning via Bidirectional Elections and Individual Perspective</title>
-      <link>httpss://zhenqincn.github.io/publication/aaai2024-backdoor-fl/</link>
+      <link>https://zhenqincn.github.io/publication/aaai2024-backdoor-fl/</link>
       <pubDate>Wed, 28 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>httpss://zhenqincn.github.io/publication/aaai2024-backdoor-fl/</guid>
+      <guid>https://zhenqincn.github.io/publication/aaai2024-backdoor-fl/</guid>
       <description>&lt;!-- 
 
 
@@ -55,9 +55,9 @@ Add the publication&#39;s **full text** or **supplementary notes** here. You can
     
     <item>
       <title>FedAPEN: Personalized Cross-silo Federated Learning with Adaptability to Statistical Heterogeneity</title>
-      <link>httpss://zhenqincn.github.io/publication/kdd2023-adaptive-fl/</link>
+      <link>https://zhenqincn.github.io/publication/kdd2023-adaptive-fl/</link>
       <pubDate>Mon, 07 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>httpss://zhenqincn.github.io/publication/kdd2023-adaptive-fl/</guid>
+      <guid>https://zhenqincn.github.io/publication/kdd2023-adaptive-fl/</guid>
       <description>&lt;!-- 
 
 
