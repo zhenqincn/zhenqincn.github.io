@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Article-Journal | Hugo Academic CV Theme</title>
+    <link>http://localhost:1313/publication_types/article-journal/</link>
+      <atom:link href="http://localhost:1313/publication_types/article-journal/index.xml" rel="self" type="application/rss+xml" />
+    <description>Article-Journal</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
+      <title>Article-Journal</title>
+      <link>http://localhost:1313/publication_types/article-journal/</link>
+    </image>
+    
+    <item>
+      <title>6G Data Plane: A Novel Architecture Enabling Data Collaboration with Arbitrary Topology</title>
+      <link>http://localhost:1313/publication/monet-2023-6g/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/monet-2023-6g/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ST-EUA: Spatio-Temporal Edge User Allocation With Task Decomposition</title>
+      <link>http://localhost:1313/publication/tsc-2023-eua/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/tsc-2023-eua/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DeepWSC: Clustering Web Services via Integrating Service Composability into Deep Semantic Features</title>
+      <link>http://localhost:1313/publication/tsc-2022-service-clustering/</link>
+      <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/tsc-2022-service-clustering/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Towards the optimality of service instance selection in mobile edge computing</title>
+      <link>http://localhost:1313/publication/kbs-2021-service-instance-selection/</link>
+      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/kbs-2021-service-instance-selection/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
