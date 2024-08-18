@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deep Neural Network | Zhen Qin</title>
+    <link>https://zhenqincn.github.io/tags/deep-neural-network/</link>
+      <atom:link href="https://zhenqincn.github.io/tags/deep-neural-network/index.xml" rel="self" type="application/rss+xml" />
+    <description>Deep Neural Network</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 01 Jul 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://zhenqincn.github.io/media/icon_hu12039905272556056342.png</url>
+      <title>Deep Neural Network</title>
+      <link>https://zhenqincn.github.io/tags/deep-neural-network/</link>
+    </image>
+    
+    <item>
+      <title>DeepWSC: Clustering Web Services via Integrating Service Composability into Deep Semantic Features</title>
+      <link>https://zhenqincn.github.io/publication/tsc-2022-service-clustering/</link>
+      <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://zhenqincn.github.io/publication/tsc-2022-service-clustering/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
