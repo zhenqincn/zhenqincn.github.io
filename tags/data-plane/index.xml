@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Plane | Zhen Qin</title>
+    <link>https://zhenqincn.github.io/tags/data-plane/</link>
+      <atom:link href="https://zhenqincn.github.io/tags/data-plane/index.xml" rel="self" type="application/rss+xml" />
+    <description>Data Plane</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://zhenqincn.github.io/media/icon_hu12039905272556056342.png</url>
+      <title>Data Plane</title>
+      <link>https://zhenqincn.github.io/tags/data-plane/</link>
+    </image>
+    
+    <item>
+      <title>6G Data Plane: A Novel Architecture Enabling Data Collaboration with Arbitrary Topology</title>
+      <link>https://zhenqincn.github.io/publication/monet-2023-6g/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://zhenqincn.github.io/publication/monet-2023-6g/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
