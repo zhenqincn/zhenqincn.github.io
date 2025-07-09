@@ -1,0 +1,1136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_图层_1" data-name="图层 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1649.3 596.8">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clippath-51);
+      }
+
+      .cls-2 {
+        clip-path: url(#clippath-34);
+      }
+
+      .cls-3 {
+        letter-spacing: 0em;
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath-38);
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath-21);
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath-6);
+      }
+
+      .cls-7 {
+        clip-path: url(#clippath-7);
+      }
+
+      .cls-8 {
+        clip-path: url(#clippath-17);
+      }
+
+      .cls-9 {
+        letter-spacing: 0em;
+      }
+
+      .cls-10 {
+        clip-path: url(#clippath-31);
+      }
+
+      .cls-11 {
+        letter-spacing: 0em;
+      }
+
+      .cls-12 {
+        clip-path: url(#clippath-15);
+      }
+
+      .cls-13 {
+        clip-path: url(#clippath-33);
+      }
+
+      .cls-14 {
+        clip-path: url(#clippath-18);
+      }
+
+      .cls-15 {
+        clip-path: url(#clippath-47);
+      }
+
+      .cls-16 {
+        letter-spacing: 0em;
+      }
+
+      .cls-17 {
+        clip-path: url(#clippath-4);
+      }
+
+      .cls-18 {
+        clip-path: url(#clippath-22);
+      }
+
+      .cls-19 {
+        letter-spacing: 0em;
+      }
+
+      .cls-20 {
+        fill: url(#_未命名的渐变_8);
+      }
+
+      .cls-21 {
+        clip-path: url(#clippath-23);
+      }
+
+      .cls-22 {
+        letter-spacing: 0em;
+      }
+
+      .cls-23 {
+        fill: url(#_未命名的渐变_5);
+      }
+
+      .cls-24 {
+        letter-spacing: 0em;
+      }
+
+      .cls-25 {
+        letter-spacing: 0em;
+      }
+
+      .cls-26 {
+        letter-spacing: 0em;
+      }
+
+      .cls-27, .cls-28 {
+        font-size: 13px;
+      }
+
+      .cls-27, .cls-28, .cls-29, .cls-30 {
+        fill: #fff;
+      }
+
+      .cls-27, .cls-30 {
+        font-family: Calibri-Bold, Calibri;
+        font-weight: 700;
+      }
+
+      .cls-31 {
+        letter-spacing: 0em;
+      }
+
+      .cls-32 {
+        clip-path: url(#clippath-54);
+      }
+
+      .cls-33 {
+        letter-spacing: 0em;
+      }
+
+      .cls-34 {
+        clip-path: url(#clippath-9);
+      }
+
+      .cls-28, .cls-29 {
+        font-family: Calibri, Calibri;
+      }
+
+      .cls-35 {
+        clip-path: url(#clippath-10);
+      }
+
+      .cls-36 {
+        clip-path: url(#clippath-42);
+      }
+
+      .cls-37 {
+        letter-spacing: 0em;
+      }
+
+      .cls-38 {
+        letter-spacing: 0em;
+      }
+
+      .cls-39 {
+        letter-spacing: 0em;
+      }
+
+      .cls-40 {
+        clip-path: url(#clippath-43);
+      }
+
+      .cls-41 {
+        letter-spacing: 0em;
+      }
+
+      .cls-42 {
+        clip-path: url(#clippath-25);
+      }
+
+      .cls-43 {
+        clip-path: url(#clippath-27);
+      }
+
+      .cls-44, .cls-45, .cls-46 {
+        fill-rule: evenodd;
+      }
+
+      .cls-44, .cls-47 {
+        fill: #e87d37;
+      }
+
+      .cls-48 {
+        letter-spacing: 0em;
+      }
+
+      .cls-49 {
+        fill: url(#_未命名的渐变_11);
+      }
+
+      .cls-50 {
+        letter-spacing: 0em;
+      }
+
+      .cls-51 {
+        clip-path: url(#clippath-11);
+      }
+
+      .cls-52 {
+        clip-path: url(#clippath-57);
+      }
+
+      .cls-53, .cls-54, .cls-55 {
+        fill: none;
+      }
+
+      .cls-56 {
+        letter-spacing: 0em;
+      }
+
+      .cls-57 {
+        clip-path: url(#clippath-36);
+      }
+
+      .cls-58 {
+        letter-spacing: 0em;
+      }
+
+      .cls-59 {
+        clip-path: url(#clippath-35);
+      }
+
+      .cls-60 {
+        clip-path: url(#clippath-48);
+      }
+
+      .cls-61 {
+        letter-spacing: 0em;
+      }
+
+      .cls-62 {
+        letter-spacing: 0em;
+      }
+
+      .cls-63 {
+        clip-path: url(#clippath-28);
+      }
+
+      .cls-64 {
+        letter-spacing: 0em;
+      }
+
+      .cls-65 {
+        letter-spacing: 0em;
+      }
+
+      .cls-66 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-67 {
+        clip-path: url(#clippath-56);
+      }
+
+      .cls-68 {
+        letter-spacing: 0em;
+      }
+
+      .cls-69 {
+        letter-spacing: 0em;
+      }
+
+      .cls-70 {
+        fill: url(#_未命名的渐变_9);
+      }
+
+      .cls-71 {
+        letter-spacing: 0em;
+      }
+
+      .cls-72 {
+        fill: url(#_未命名的渐变_15);
+      }
+
+      .cls-29 {
+        font-size: 13px;
+      }
+
+      .cls-73 {
+        clip-path: url(#clippath-45);
+      }
+
+      .cls-74 {
+        letter-spacing: 0em;
+      }
+
+      .cls-75 {
+        clip-path: url(#clippath-46);
+      }
+
+      .cls-76 {
+        letter-spacing: 0em;
+      }
+
+      .cls-77 {
+        clip-path: url(#clippath-40);
+      }
+
+      .cls-78 {
+        letter-spacing: 0em;
+      }
+
+      .cls-79 {
+        clip-path: url(#clippath-5);
+      }
+
+      .cls-80 {
+        clip-path: url(#clippath-20);
+      }
+
+      .cls-81 {
+        fill: url(#_未命名的渐变_6);
+      }
+
+      .cls-82 {
+        letter-spacing: 0em;
+      }
+
+      .cls-83 {
+        clip-path: url(#clippath-8);
+      }
+
+      .cls-84 {
+        clip-path: url(#clippath-52);
+      }
+
+      .cls-85 {
+        letter-spacing: 0em;
+      }
+
+      .cls-86 {
+        clip-path: url(#clippath-41);
+      }
+
+      .cls-87 {
+        letter-spacing: 0em;
+      }
+
+      .cls-88 {
+        fill: url(#_未命名的渐变_7);
+      }
+
+      .cls-89 {
+        letter-spacing: 0em;
+      }
+
+      .cls-90 {
+        letter-spacing: 0em;
+      }
+
+      .cls-91 {
+        clip-path: url(#clippath-3);
+      }
+
+      .cls-92 {
+        clip-path: url(#clippath-26);
+      }
+
+      .cls-93 {
+        letter-spacing: 0em;
+      }
+
+      .cls-94 {
+        letter-spacing: 0em;
+      }
+
+      .cls-95 {
+        clip-path: url(#clippath-12);
+      }
+
+      .cls-96 {
+        clip-path: url(#clippath-50);
+      }
+
+      .cls-97 {
+        letter-spacing: 0em;
+      }
+
+      .cls-98 {
+        fill: url(#_未命名的渐变_3);
+      }
+
+      .cls-99 {
+        letter-spacing: 0em;
+      }
+
+      .cls-100 {
+        clip-path: url(#clippath-14);
+      }
+
+      .cls-54 {
+        stroke: #fff;
+        stroke-width: 1.5px;
+      }
+
+      .cls-54, .cls-55 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-101 {
+        letter-spacing: 0em;
+      }
+
+      .cls-102 {
+        clip-path: url(#clippath-30);
+      }
+
+      .cls-103 {
+        fill: url(#_未命名的渐变_13);
+      }
+
+      .cls-104 {
+        clip-path: url(#clippath-19);
+      }
+
+      .cls-105 {
+        fill: url(#_未命名的渐变);
+      }
+
+      .cls-106 {
+        letter-spacing: 0em;
+      }
+
+      .cls-107 {
+        letter-spacing: 0em;
+      }
+
+      .cls-108 {
+        letter-spacing: 0em;
+      }
+
+      .cls-45 {
+        fill: #c62324;
+      }
+
+      .cls-46 {
+        fill: #156193;
+      }
+
+      .cls-109 {
+        fill: url(#_未命名的渐变_12);
+      }
+
+      .cls-110 {
+        clip-path: url(#clippath-32);
+      }
+
+      .cls-111 {
+        clip-path: url(#clippath-55);
+      }
+
+      .cls-112 {
+        letter-spacing: 0em;
+      }
+
+      .cls-113 {
+        letter-spacing: 0em;
+      }
+
+      .cls-114 {
+        letter-spacing: 0em;
+      }
+
+      .cls-30 {
+        font-size: 18px;
+      }
+
+      .cls-115 {
+        letter-spacing: 0em;
+      }
+
+      .cls-116 {
+        letter-spacing: 0em;
+      }
+
+      .cls-117 {
+        clip-path: url(#clippath-53);
+      }
+
+      .cls-118 {
+        letter-spacing: 0em;
+      }
+
+      .cls-119 {
+        clip-path: url(#clippath-39);
+      }
+
+      .cls-120 {
+        letter-spacing: 0em;
+      }
+
+      .cls-121 {
+        clip-path: url(#clippath-16);
+      }
+
+      .cls-122 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-123 {
+        clip-path: url(#clippath-29);
+      }
+
+      .cls-124 {
+        fill: url(#_未命名的渐变_4);
+      }
+
+      .cls-125 {
+        clip-path: url(#clippath-49);
+      }
+
+      .cls-126 {
+        fill: url(#_未命名的渐变_14);
+      }
+
+      .cls-127 {
+        clip-path: url(#clippath-37);
+      }
+
+      .cls-128 {
+        clip-path: url(#clippath-58);
+      }
+
+      .cls-129 {
+        clip-path: url(#clippath-13);
+      }
+
+      .cls-130 {
+        letter-spacing: 0em;
+      }
+
+      .cls-131 {
+        letter-spacing: 0em;
+      }
+
+      .cls-132 {
+        letter-spacing: 0em;
+      }
+
+      .cls-133 {
+        clip-path: url(#clippath-24);
+      }
+
+      .cls-134 {
+        letter-spacing: 0em;
+      }
+
+      .cls-135 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-136 {
+        fill: url(#_未命名的渐变_10);
+      }
+
+      .cls-55 {
+        stroke: #156193;
+      }
+
+      .cls-137 {
+        letter-spacing: 0em;
+      }
+
+      .cls-138 {
+        clip-path: url(#clippath-44);
+      }
+
+      .cls-139 {
+        fill: url(#_未命名的渐变_2);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-3">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <linearGradient id="_未命名的渐变" data-name="未命名的渐变" x1="1067.4" y1="288.5" x2="1067.4" y2="342.3" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#156193"/>
+      <stop offset=".4" stop-color="#1a80c3"/>
+      <stop offset=".5" stop-color="#1a80c3"/>
+      <stop offset=".6" stop-color="#1a80c3"/>
+      <stop offset="1" stop-color="#156193"/>
+    </linearGradient>
+    <clipPath id="clippath-4">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-5">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-6">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-7">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-8">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-9">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-10">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-11">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-12">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-13">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-14">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <linearGradient id="_未命名的渐变_2" data-name="未命名的渐变 2" x1="710.2" y1="335.2" x2="710.2" y2="389.1" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#156193"/>
+      <stop offset=".4" stop-color="#1a80c3"/>
+      <stop offset=".5" stop-color="#1a80c3"/>
+      <stop offset=".6" stop-color="#1a80c3"/>
+      <stop offset="1" stop-color="#156193"/>
+    </linearGradient>
+    <clipPath id="clippath-15">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <linearGradient id="_未命名的渐变_3" data-name="未命名的渐变 3" x1="605.4" y1="390.5" x2="605.4" y2="444.4" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#156193"/>
+      <stop offset=".4" stop-color="#1a80c3"/>
+      <stop offset=".5" stop-color="#1a80c3"/>
+      <stop offset=".6" stop-color="#1a80c3"/>
+      <stop offset="1" stop-color="#156193"/>
+    </linearGradient>
+    <clipPath id="clippath-16">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-17">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-18">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <linearGradient id="_未命名的渐变_4" data-name="未命名的渐变 4" x1="509" y1="390.5" x2="509" y2="444.4" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#156193"/>
+      <stop offset=".4" stop-color="#1a80c3"/>
+      <stop offset=".5" stop-color="#1a80c3"/>
+      <stop offset=".6" stop-color="#1a80c3"/>
+      <stop offset="1" stop-color="#156193"/>
+    </linearGradient>
+    <clipPath id="clippath-19">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-20">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-21">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-22">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-23">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-24">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <linearGradient id="_未命名的渐变_5" data-name="未命名的渐变 5" x1="786.8" y1="288.5" x2="786.8" y2="342.3" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#156193"/>
+      <stop offset=".4" stop-color="#1a80c3"/>
+      <stop offset=".5" stop-color="#1a80c3"/>
+      <stop offset=".6" stop-color="#1a80c3"/>
+      <stop offset="1" stop-color="#156193"/>
+    </linearGradient>
+    <clipPath id="clippath-25">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-26">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-27">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-28">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-29">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-30">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-31">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-32">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <linearGradient id="_未命名的渐变_6" data-name="未命名的渐变 6" x1="911.5" y1="390.5" x2="911.5" y2="444.4" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#156193"/>
+      <stop offset=".4" stop-color="#1a80c3"/>
+      <stop offset=".5" stop-color="#1a80c3"/>
+      <stop offset=".6" stop-color="#1a80c3"/>
+      <stop offset="1" stop-color="#156193"/>
+    </linearGradient>
+    <clipPath id="clippath-33">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-34">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-35">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-36">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-37">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-38">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-39">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <linearGradient id="_未命名的渐变_7" data-name="未命名的渐变 7" x1="1104.4" y1="390.5" x2="1104.4" y2="444.4" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#156193"/>
+      <stop offset=".4" stop-color="#1a80c3"/>
+      <stop offset=".5" stop-color="#1a80c3"/>
+      <stop offset=".6" stop-color="#1a80c3"/>
+      <stop offset="1" stop-color="#156193"/>
+    </linearGradient>
+    <clipPath id="clippath-40">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <linearGradient id="_未命名的渐变_8" data-name="未命名的渐变 8" x1="1007.9" y1="390.5" x2="1007.9" y2="444.4" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#156193"/>
+      <stop offset=".4" stop-color="#1a80c3"/>
+      <stop offset=".5" stop-color="#1a80c3"/>
+      <stop offset=".6" stop-color="#1a80c3"/>
+      <stop offset="1" stop-color="#156193"/>
+    </linearGradient>
+    <clipPath id="clippath-41">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <linearGradient id="_未命名的渐变_9" data-name="未命名的渐变 9" x1="942.6" y1="294.8" x2="942.6" y2="340.2" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#156193"/>
+      <stop offset=".4" stop-color="#1a80c3"/>
+      <stop offset=".5" stop-color="#1a80c3"/>
+      <stop offset=".6" stop-color="#1a80c3"/>
+      <stop offset="1" stop-color="#156193"/>
+    </linearGradient>
+    <clipPath id="clippath-42">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-43">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-44">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-45">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-46">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-47">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <linearGradient id="_未命名的渐变_10" data-name="未命名的渐变 10" x1="316.2" y1="291.3" x2="316.2" y2="345.2" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#156193"/>
+      <stop offset=".4" stop-color="#1a80c3"/>
+      <stop offset=".5" stop-color="#1a80c3"/>
+      <stop offset=".6" stop-color="#1a80c3"/>
+      <stop offset="1" stop-color="#156193"/>
+    </linearGradient>
+    <clipPath id="clippath-48">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <linearGradient id="_未命名的渐变_11" data-name="未命名的渐变 11" x1="422.5" y1="291.3" x2="422.5" y2="345.2" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#156193"/>
+      <stop offset=".4" stop-color="#1a80c3"/>
+      <stop offset=".5" stop-color="#1a80c3"/>
+      <stop offset=".6" stop-color="#1a80c3"/>
+      <stop offset="1" stop-color="#156193"/>
+    </linearGradient>
+    <clipPath id="clippath-49">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-50">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-51">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-52">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-53">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <linearGradient id="_未命名的渐变_12" data-name="未命名的渐变 12" x1="1199.8" y1="289.9" x2="1199.8" y2="343.7" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#156193"/>
+      <stop offset=".4" stop-color="#1a80c3"/>
+      <stop offset=".5" stop-color="#1a80c3"/>
+      <stop offset=".6" stop-color="#1a80c3"/>
+      <stop offset="1" stop-color="#156193"/>
+    </linearGradient>
+    <clipPath id="clippath-54">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <linearGradient id="_未命名的渐变_13" data-name="未命名的渐变 13" x1="1327.4" y1="289.9" x2="1327.4" y2="343.7" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#156193"/>
+      <stop offset=".4" stop-color="#1a80c3"/>
+      <stop offset=".5" stop-color="#1a80c3"/>
+      <stop offset=".6" stop-color="#1a80c3"/>
+      <stop offset="1" stop-color="#156193"/>
+    </linearGradient>
+    <clipPath id="clippath-55">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <linearGradient id="_未命名的渐变_14" data-name="未命名的渐变 14" x1="1454.9" y1="278.5" x2="1454.9" y2="355.1" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#156193"/>
+      <stop offset=".4" stop-color="#1a80c3"/>
+      <stop offset=".5" stop-color="#1a80c3"/>
+      <stop offset=".6" stop-color="#1a80c3"/>
+      <stop offset="1" stop-color="#156193"/>
+    </linearGradient>
+    <clipPath id="clippath-56">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <clipPath id="clippath-57">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+    <linearGradient id="_未命名的渐变_15" data-name="未命名的渐变 15" x1="806.5" y1="390.5" x2="806.5" y2="444.4" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#156193"/>
+      <stop offset=".4" stop-color="#1a80c3"/>
+      <stop offset=".5" stop-color="#1a80c3"/>
+      <stop offset=".6" stop-color="#1a80c3"/>
+      <stop offset="1" stop-color="#156193"/>
+    </linearGradient>
+    <clipPath id="clippath-58">
+      <rect class="cls-53" x=".8" y=".8" width="1647.7" height="595.2"/>
+    </clipPath>
+  </defs>
+  <g class="cls-135">
+    <rect class="cls-54" x=".8" y=".8" width="1647.8" height="595.3"/>
+  </g>
+  <polygon class="cls-45" points="500.5 240.3 829.9 240.3 857.7 213.4 528.3 213.4 500.5 240.3"/>
+  <polygon class="cls-54" points="500.5 240.3 829.9 240.3 857.7 213.4 528.3 213.4 500.5 240.3"/>
+  <g class="cls-66">
+    <text class="cls-30" transform="translate(624.6 232.3)"><tspan x="0" y="0">K</tspan><tspan class="cls-50" x="9.8" y="0">e</tspan><tspan x="18.9" y="0">y</tspan></text>
+  </g>
+  <g class="cls-122">
+    <text class="cls-30" transform="translate(652 232.3)"><tspan x="0" y="0"> </tspan></text>
+  </g>
+  <g class="cls-91">
+    <text class="cls-30" transform="translate(656.1 232.3)"><tspan x="0" y="0">Alignment</tspan></text>
+  </g>
+  <rect class="cls-105" x="1024.8" y="315.4" width="85" height="26.9"/>
+  <rect class="cls-54" x="1024.8" y="315.4" width="85" height="26.9"/>
+  <g class="cls-17">
+    <text class="cls-28" transform="translate(1042.9 332.8)"><tspan class="cls-65" x="0" y="0">O</tspan><tspan x="8.6" y="0">ne</tspan></text>
+  </g>
+  <g class="cls-79">
+    <text class="cls-28" transform="translate(1064.8 332.8)"><tspan x="0" y="0">-</tspan></text>
+  </g>
+  <g class="cls-6">
+    <text class="cls-28" transform="translate(1068.8 332.8)"><tspan x="0" y="0">shot</tspan></text>
+  </g>
+  <path class="cls-44" d="M537.3,342.3h178.6c3.9,0,7.1-3.2,7.1-7.1v-12.8c0-3.9-3.2-7.1-7.1-7.1h-178.6c-3.9,0-7.1,3.2-7.1,7.1v12.8c0,3.9,3.2,7.1,7.1,7.1Z"/>
+  <path class="cls-54" d="M537.3,342.3h178.6c3.9,0,7.1-3.2,7.1-7.1v-12.8c0-3.9-3.2-7.1-7.1-7.1h-178.6c-3.9,0-7.1,3.2-7.1,7.1v12.8c0,3.9,3.2,7.1,7.1,7.1Z"/>
+  <g class="cls-7">
+    <text class="cls-28" transform="translate(580.5 332.8)"><tspan class="cls-71" x="0" y="0">A</tspan><tspan class="cls-69" x="7.5" y="0">r</tspan><tspan x="12" y="0">e</tspan><tspan class="cls-48" x="18.4" y="0"> </tspan><tspan x="21.4" y="0">keys </tspan></text>
+  </g>
+  <g class="cls-83">
+    <text class="cls-27" transform="translate(628.3 332.8)"><tspan x="0" y="0">p</tspan><tspan class="cls-19" x="7" y="0">r</tspan><tspan class="cls-107" x="11.6" y="0">e</tspan><tspan class="cls-82" x="18.1" y="0">c</tspan><tspan class="cls-112" x="23.6" y="0">i</tspan><tspan x="26.7" y="0">se</tspan></text>
+  </g>
+  <g class="cls-34">
+    <text class="cls-28" transform="translate(666.8 332.8)"><tspan x="0" y="0">?</tspan></text>
+  </g>
+  <path class="cls-44" d="M488.4,389.1h144.4c3.2,0,5.7-2.6,5.7-5.7v-15.5c0-3.2-2.6-5.7-5.7-5.7h-144.4c-3.2,0-5.7,2.6-5.7,5.7v15.5c0,3.2,2.6,5.7,5.7,5.7Z"/>
+  <path class="cls-54" d="M488.4,389.1h144.4c3.2,0,5.7-2.6,5.7-5.7v-15.5c0-3.2-2.6-5.7-5.7-5.7h-144.4c-3.2,0-5.7,2.6-5.7,5.7v15.5c0,3.2,2.6,5.7,5.7,5.7Z"/>
+  <g class="cls-35">
+    <text class="cls-28" transform="translate(490.1 379.6)"><tspan class="cls-3" x="0" y="0">C</tspan><tspan x="6.9" y="0">a</tspan><tspan class="cls-65" x="13.1" y="0">n</tspan><tspan x="20" y="0"> </tspan></text>
+  </g>
+  <g class="cls-51">
+    <text class="cls-27" transform="translate(513 379.6)"><tspan x="0" y="0">mo</tspan><tspan class="cls-58" x="17.5" y="0">s</tspan><tspan class="cls-107" x="22.8" y="0">t</tspan><tspan x="27.2" y="0"> </tspan></text>
+  </g>
+  <g class="cls-95">
+    <text class="cls-28" transform="translate(543.2 379.6)"><tspan x="0" y="0">key</tspan><tspan class="cls-115" x="18.2" y="0">s</tspan><tspan class="cls-112" x="23.4" y="0"> </tspan><tspan x="26.2" y="0">b</tspan><tspan class="cls-19" x="33.1" y="0">e</tspan><tspan class="cls-90" x="39.6" y="0"> </tspan></text>
+  </g>
+  <g class="cls-129">
+    <text class="cls-27" transform="translate(585.7 379.6)"><tspan class="cls-87" x="0" y="0">a</tspan><tspan class="cls-65" x="6.4" y="0">li</tspan><tspan class="cls-90" x="12.8" y="0">gn</tspan><tspan class="cls-71" x="25.9" y="0">e</tspan><tspan x="32.5" y="0">d</tspan></text>
+  </g>
+  <g class="cls-100">
+    <text class="cls-28" transform="translate(625.2 379.6)"><tspan x="0" y="0">?</tspan></text>
+  </g>
+  <rect class="cls-139" x="667.7" y="362.2" width="85" height="26.9"/>
+  <rect class="cls-54" x="667.7" y="362.2" width="85" height="26.9"/>
+  <g class="cls-12">
+    <text class="cls-28" transform="translate(695.8 379.6)"><tspan class="cls-3" x="0" y="0">F</tspan><tspan x="6" y="0">u</tspan><tspan class="cls-107" x="12.8" y="0">z</tspan><tspan class="cls-132" x="17.9" y="0">z</tspan><tspan class="cls-25" x="23" y="0">y</tspan></text>
+  </g>
+  <rect class="cls-98" x="562.8" y="417.4" width="85" height="26.9"/>
+  <rect class="cls-54" x="562.8" y="417.4" width="85" height="26.9"/>
+  <g class="cls-121">
+    <text class="cls-29" transform="translate(571.6 434.9)"><tspan class="cls-22" x="0" y="0">S</tspan><tspan class="cls-16" x="6" y="0">e</tspan><tspan class="cls-118" x="12.4" y="0">m</tspan><tspan x="22.8" y="0">i</tspan></text>
+  </g>
+  <g class="cls-8">
+    <text class="cls-29" transform="translate(597.4 434.9)"><tspan x="0" y="0">-</tspan></text>
+  </g>
+  <g class="cls-14">
+    <text class="cls-29" transform="translate(601.4 434.9)"><tspan x="0" y="0">p</tspan><tspan class="cls-120" x="6.8" y="0">r</tspan><tspan x="11.4" y="0">e</tspan><tspan class="cls-99" x="17.8" y="0">c</tspan><tspan x="23.3" y="0">i</tspan><tspan class="cls-61" x="26.3" y="0">s</tspan><tspan class="cls-16" x="31.4" y="0">e</tspan></text>
+  </g>
+  <rect class="cls-124" x="466.5" y="417.4" width="85" height="26.9"/>
+  <rect class="cls-54" x="466.5" y="417.4" width="85" height="26.9"/>
+  <g class="cls-104">
+    <text class="cls-29" transform="translate(490.2 434.9)"><tspan x="0" y="0">Pr</tspan><tspan class="cls-120" x="11.2" y="0">e</tspan><tspan class="cls-130" x="17.7" y="0">c</tspan><tspan x="23.1" y="0">i</tspan><tspan class="cls-62" x="26.1" y="0">s</tspan><tspan x="31.3" y="0">e</tspan></text>
+  </g>
+  <rect class="cls-47" x="568.4" y="264.4" width="192.8" height="26.9" rx="7.1" ry="7.1"/>
+  <rect class="cls-54" x="568.4" y="264.4" width="192.8" height="26.9" rx="7.1" ry="7.1"/>
+  <g class="cls-80">
+    <text class="cls-28" transform="translate(627.1 281.8)"><tspan class="cls-134" x="0" y="0">D</tspan><tspan x="8" y="0">o</tspan></text>
+  </g>
+  <g class="cls-5">
+    <text class="cls-27" transform="translate(642 281.8)"><tspan x="0" y="0"> </tspan></text>
+  </g>
+  <g class="cls-18">
+    <text class="cls-28" transform="translate(644.9 281.8)"><tspan x="0" y="0">key</tspan><tspan class="cls-115" x="18.2" y="0">s</tspan><tspan x="23.4" y="0"> </tspan></text>
+  </g>
+  <g class="cls-21">
+    <text class="cls-27" transform="translate(671.2 281.8)"><tspan class="cls-19" x="0" y="0">e</tspan><tspan class="cls-69" x="6.6" y="0">x</tspan><tspan class="cls-71" x="12.5" y="0">i</tspan><tspan x="15.7" y="0">st</tspan></text>
+  </g>
+  <g class="cls-133">
+    <text class="cls-28" transform="translate(696.6 281.8)"><tspan x="0" y="0">?</tspan></text>
+  </g>
+  <rect class="cls-23" x="744.3" y="315.4" width="85" height="26.9"/>
+  <rect class="cls-54" x="744.3" y="315.4" width="85" height="26.9"/>
+  <g class="cls-42">
+    <text class="cls-28" transform="translate(770 332.8)"><tspan class="cls-19" x="0" y="0">L</tspan><tspan class="cls-26" x="5.5" y="0">a</tspan><tspan class="cls-64" x="11.6" y="0">t</tspan><tspan x="16" y="0">e</tspan><tspan class="cls-65" x="22.5" y="0">n</tspan><tspan class="cls-25" x="29.3" y="0">t</tspan></text>
+  </g>
+  <polygon class="cls-45" points="835 240.3 1151.9 240.3 1179.4 213.4 862.5 213.4 835 240.3"/>
+  <polygon class="cls-54" points="835 240.3 1151.9 240.3 1179.4 213.4 862.5 213.4 835 240.3"/>
+  <g class="cls-92">
+    <text class="cls-30" transform="translate(947.9 232.3)"><tspan x="0" y="0">Comm</tspan><tspan class="cls-68" x="48.5" y="0">u</tspan><tspan class="cls-93" x="58.2" y="0">n</tspan><tspan x="67.8" y="0">ication</tspan></text>
+  </g>
+  <path class="cls-44" d="M975.7,390.5h118.5c2.6,0,4.7-2.1,4.7-4.7v-17.5c0-2.6-2.1-4.7-4.7-4.7h-118.5c-2.6,0-4.7,2.1-4.7,4.7v17.5c0,2.6,2.1,4.7,4.7,4.7Z"/>
+  <path class="cls-54" d="M975.7,390.5h118.5c2.6,0,4.7-2.1,4.7-4.7v-17.5c0-2.6-2.1-4.7-4.7-4.7h-118.5c-2.6,0-4.7,2.1-4.7,4.7v17.5c0,2.6,2.1,4.7,4.7,4.7Z"/>
+  <g class="cls-43">
+    <text class="cls-28" transform="translate(979 381)"><tspan x="0" y="0">I</tspan><tspan class="cls-65" x="3.3" y="0">s</tspan><tspan class="cls-112" x="8.4" y="0"> </tspan><tspan x="11.3" y="0">c</tspan><tspan class="cls-78" x="16.7" y="0">o</tspan><tspan x="23.6" y="0">n</tspan><tspan class="cls-106" x="30.4" y="0">n</tspan><tspan x="37.3" y="0">e</tspan><tspan class="cls-19" x="43.7" y="0">c</tspan><tspan class="cls-24" x="49.2" y="0">tio</tspan><tspan class="cls-85" x="63.3" y="0">n</tspan><tspan class="cls-108" x="70.1" y="0"> </tspan></text>
+  </g>
+  <g class="cls-63">
+    <text class="cls-27" transform="translate(1052.2 381)"><tspan x="0" y="0">s</tspan><tspan class="cls-65" x="5.2" y="0">t</tspan><tspan class="cls-38" x="9.7" y="0">a</tspan><tspan class="cls-24" x="16.1" y="0">b</tspan><tspan class="cls-65" x="23" y="0">l</tspan><tspan x="26.2" y="0">e</tspan></text>
+  </g>
+  <g class="cls-123">
+    <text class="cls-28" transform="translate(1085 381)"><tspan x="0" y="0">?</tspan></text>
+  </g>
+  <path class="cls-44" d="M814,390.5h134.4c2.9,0,5.3-2.4,5.3-5.3v-16.3c0-2.9-2.4-5.3-5.3-5.3h-134.4c-3,0-5.3,2.4-5.3,5.3v16.3c0,2.9,2.4,5.3,5.3,5.3Z"/>
+  <path class="cls-54" d="M814,390.5h134.4c2.9,0,5.3-2.4,5.3-5.3v-16.3c0-2.9-2.4-5.3-5.3-5.3h-134.4c-3,0-5.3,2.4-5.3,5.3v16.3c0,2.9,2.4,5.3,5.3,5.3Z"/>
+  <g class="cls-102">
+    <text class="cls-28" transform="translate(816.6 381)"><tspan x="0" y="0">I</tspan><tspan class="cls-65" x="3.3" y="0">s</tspan><tspan class="cls-108" x="8.4" y="0"> </tspan></text>
+  </g>
+  <g class="cls-10">
+    <text class="cls-27" transform="translate(827.9 381)"><tspan x="0" y="0">b</tspan><tspan class="cls-134" x="7" y="0">a</tspan><tspan x="13.4" y="0">nd</tspan><tspan class="cls-65" x="27.3" y="0">w</tspan><tspan class="cls-113" x="37" y="0">i</tspan><tspan class="cls-24" x="40.2" y="0">d</tspan><tspan class="cls-19" x="47.1" y="0">t</tspan><tspan x="51.7" y="0">h</tspan><tspan class="cls-19" x="58.6" y="0"> </tspan><tspan x="61.6" y="0">su</tspan><tspan class="cls-31" x="73.7" y="0">ffi</tspan><tspan class="cls-108" x="84.6" y="0">ci</tspan><tspan class="cls-115" x="93.2" y="0">e</tspan><tspan class="cls-24" x="99.8" y="0">nt</tspan></text>
+  </g>
+  <g class="cls-110">
+    <text class="cls-28" transform="translate(939.8 381)"><tspan x="0" y="0">?</tspan></text>
+  </g>
+  <rect class="cls-81" x="869" y="417.4" width="85" height="26.9"/>
+  <rect class="cls-54" x="869" y="417.4" width="85" height="26.9"/>
+  <g class="cls-13">
+    <text class="cls-29" transform="translate(878.8 434.9)"><tspan class="cls-39" x="0" y="0">C</tspan><tspan x="6.9" y="0">o</tspan><tspan class="cls-101" x="13.8" y="0">m</tspan><tspan x="24.1" y="0">p</tspan><tspan class="cls-114" x="30.9" y="0">r</tspan><tspan class="cls-76" x="35.5" y="0">es</tspan><tspan class="cls-114" x="47" y="0">s</tspan><tspan x="52.2" y="0">ed</tspan></text>
+  </g>
+  <path class="cls-44" d="M879.8,291.3h227.2c5,0,9-4,9-9v-8.9c0-5-4-9-9-9h-227.2c-5,0-9,4-9,9v8.9c0,5,4,9,9,9Z"/>
+  <path class="cls-54" d="M879.8,291.3h227.2c5,0,9-4,9-9v-8.9c0-5-4-9-9-9h-227.2c-5,0-9,4-9,9v8.9c0,5,4,9,9,9Z"/>
+  <g class="cls-2">
+    <text class="cls-28" transform="translate(887.3 281.8)"><tspan x="0" y="0">I</tspan><tspan class="cls-65" x="3.3" y="0">s</tspan><tspan x="8.4" y="0"> </tspan></text>
+  </g>
+  <g class="cls-59">
+    <text class="cls-27" transform="translate(898.6 281.8)"><tspan x="0" y="0">mu</tspan><tspan class="cls-9" x="17.5" y="0">l</tspan><tspan class="cls-24" x="20.7" y="0">ti</tspan></text>
+  </g>
+  <g class="cls-57">
+    <text class="cls-27" transform="translate(927 281.8)"><tspan x="0" y="0">-</tspan></text>
+  </g>
+  <g class="cls-127">
+    <text class="cls-27" transform="translate(931 281.8)"><tspan class="cls-106" x="0" y="0">r</tspan><tspan x="4.7" y="0">ound</tspan></text>
+  </g>
+  <g class="cls-4">
+    <text class="cls-28" transform="translate(963.5 281.8)"><tspan x="0" y="0"> </tspan></text>
+  </g>
+  <g class="cls-119">
+    <text class="cls-28" transform="translate(966.5 281.8)"><tspan x="0" y="0">c</tspan><tspan class="cls-78" x="5.5" y="0">o</tspan><tspan x="12.3" y="0">m</tspan><tspan class="cls-65" x="22.7" y="0">m</tspan><tspan x="33.1" y="0">u</tspan><tspan class="cls-106" x="39.9" y="0">n</tspan><tspan x="46.8" y="0">i</tspan><tspan class="cls-31" x="49.7" y="0">c</tspan><tspan class="cls-26" x="55.2" y="0">a</tspan><tspan x="61.4" y="0">tio</tspan><tspan class="cls-65" x="75.4" y="0">n</tspan><tspan class="cls-113" x="82.3" y="0"> </tspan><tspan class="cls-24" x="85.1" y="0">a</tspan><tspan class="cls-65" x="91.4" y="0">l</tspan><tspan class="cls-24" x="94.4" y="0">lowe</tspan><tspan class="cls-65" x="119.9" y="0">d</tspan><tspan class="cls-24" x="126.7" y="0">?</tspan></text>
+  </g>
+  <rect class="cls-88" x="1061.9" y="417.4" width="85" height="26.9"/>
+  <rect class="cls-54" x="1061.9" y="417.4" width="85" height="26.9"/>
+  <g class="cls-77">
+    <text class="cls-29" transform="translate(1067.2 434.9)"><tspan class="cls-11" x="0" y="0">A</tspan><tspan x="7.5" y="0">synch</tspan><tspan class="cls-41" x="37.6" y="0">r</tspan><tspan x="42.2" y="0">ono</tspan><tspan class="cls-39" x="62.7" y="0">u</tspan><tspan x="69.6" y="0">s</tspan></text>
+  </g>
+  <rect class="cls-20" x="965.4" y="417.4" width="85" height="26.9"/>
+  <rect class="cls-54" x="965.4" y="417.4" width="85" height="26.9"/>
+  <g class="cls-86">
+    <text class="cls-29" transform="translate(974 434.9)"><tspan class="cls-37" x="0" y="0">S</tspan><tspan x="6" y="0">yn</tspan><tspan class="cls-114" x="18.7" y="0">c</tspan><tspan class="cls-137" x="24.2" y="0">h</tspan><tspan x="30.9" y="0">ro</tspan><tspan class="cls-11" x="42.3" y="0">n</tspan><tspan x="49.2" y="0">ous</tspan></text>
+  </g>
+  <circle class="cls-70" cx="942.7" cy="328.9" r="11.3"/>
+  <circle class="cls-54" cx="942.7" cy="328.9" r="11.3"/>
+  <polygon class="cls-45" points="243.7 240.3 494.2 240.3 522 213.4 271.5 213.4 243.7 240.3"/>
+  <polygon class="cls-54" points="243.7 240.3 494.2 240.3 522 213.4 271.5 213.4 243.7 240.3"/>
+  <g class="cls-36">
+    <text class="cls-30" transform="translate(322.8 232.3)"><tspan x="0" y="0">Feature</tspan></text>
+  </g>
+  <g class="cls-40">
+    <text class="cls-30" transform="translate(380.4 232.3)"><tspan x="0" y="0"> </tspan></text>
+  </g>
+  <g class="cls-138">
+    <text class="cls-30" transform="translate(384.4 232.3)"><tspan x="0" y="0">Balan</tspan><tspan class="cls-116" x="41.9" y="0">c</tspan><tspan x="49.4" y="0">e</tspan></text>
+  </g>
+  <path class="cls-44" d="M279.4,291.3h178.6c3.9,0,7.1-3.2,7.1-7.1v-12.8c0-3.9-3.2-7.1-7.1-7.1h-178.6c-3.9,0-7.1,3.2-7.1,7.1v12.8c0,3.9,3.2,7.1,7.1,7.1Z"/>
+  <path class="cls-54" d="M279.4,291.3h178.6c3.9,0,7.1-3.2,7.1-7.1v-12.8c0-3.9-3.2-7.1-7.1-7.1h-178.6c-3.9,0-7.1,3.2-7.1,7.1v12.8c0,3.9,3.2,7.1,7.1,7.1Z"/>
+  <g class="cls-73">
+    <text class="cls-28" transform="translate(280.9 281.8)"><tspan class="cls-71" x="0" y="0">A</tspan><tspan class="cls-69" x="7.5" y="0">r</tspan><tspan x="12" y="0">e</tspan><tspan class="cls-48" x="18.4" y="0"> </tspan><tspan x="21.4" y="0">fe</tspan><tspan class="cls-89" x="31.8" y="0">a</tspan><tspan x="38.1" y="0">tu</tspan><tspan class="cls-65" x="49.2" y="0">r</tspan><tspan x="53.8" y="0">e dis</tspan><tspan class="cls-64" x="78" y="0">t</tspan><tspan class="cls-69" x="82.5" y="0">r</tspan><tspan x="86.9" y="0">i</tspan><tspan class="cls-3" x="89.9" y="0">b</tspan><tspan x="96.7" y="0">uti</tspan><tspan class="cls-132" x="110.8" y="0">o</tspan><tspan x="117.6" y="0">n </tspan></text>
+  </g>
+  <g class="cls-75">
+    <text class="cls-27" transform="translate(408.5 281.8)"><tspan x="0" y="0">b</tspan><tspan class="cls-134" x="7" y="0">a</tspan><tspan class="cls-112" x="13.4" y="0">l</tspan><tspan class="cls-134" x="16.5" y="0">a</tspan><tspan x="23" y="0">nce</tspan></text>
+  </g>
+  <g class="cls-15">
+    <text class="cls-28" transform="translate(450.5 281.8)"><tspan x="0" y="0">?</tspan></text>
+  </g>
+  <rect class="cls-136" x="273.7" y="318.2" width="85" height="26.9"/>
+  <rect class="cls-54" x="273.7" y="318.2" width="85" height="26.9"/>
+  <g class="cls-60">
+    <text class="cls-28" transform="translate(292.2 335.7)"><tspan x="0" y="0">B</tspan><tspan class="cls-19" x="7" y="0">a</tspan><tspan class="cls-90" x="13.3" y="0">l</tspan><tspan class="cls-97" x="16.3" y="0">a</tspan><tspan class="cls-74" x="22.5" y="0">n</tspan><tspan x="29.2" y="0">c</tspan><tspan class="cls-56" x="34.7" y="0">e</tspan><tspan x="41.2" y="0">d</tspan></text>
+  </g>
+  <rect class="cls-49" x="380" y="318.2" width="85" height="26.9"/>
+  <rect class="cls-54" x="380" y="318.2" width="85" height="26.9"/>
+  <g class="cls-125">
+    <text class="cls-28" transform="translate(402.1 335.7)"><tspan class="cls-3" x="0" y="0">S</tspan><tspan x="6" y="0">kewed</tspan></text>
+  </g>
+  <polygon class="cls-45" points="1154.7 241 1499.3 241 1525.8 214.1 1181.2 214.1 1154.7 241"/>
+  <polygon class="cls-54" points="1154.7 241 1499.3 241 1525.8 214.1 1181.2 214.1 1154.7 241"/>
+  <g class="cls-96">
+    <text class="cls-30" transform="translate(1294.2 233)"><tspan x="0" y="0">T</tspan><tspan class="cls-33" x="8.9" y="0">r</tspan><tspan class="cls-93" x="15.3" y="0">u</tspan><tspan x="24.9" y="0">stworthy</tspan></text>
+  </g>
+  <path class="cls-44" d="M1228.9,291.3h197c4.3,0,7.8-3.5,7.8-7.8v-11.3c0-4.3-3.5-7.8-7.8-7.8h-197c-4.3,0-7.8,3.5-7.8,7.8v11.3c0,4.3,3.5,7.8,7.8,7.8Z"/>
+  <path class="cls-54" d="M1228.9,291.3h197c4.3,0,7.8-3.5,7.8-7.8v-11.3c0-4.3-3.5-7.8-7.8-7.8h-197c-4.3,0-7.8,3.5-7.8,7.8v11.3c0,4.3,3.5,7.8,7.8,7.8Z"/>
+  <g class="cls-1">
+    <text class="cls-28" transform="translate(1248.3 281.8)"><tspan x="0" y="0">Wh</tspan><tspan class="cls-65" x="18.3" y="0">a</tspan><tspan x="24.6" y="0">t</tspan><tspan class="cls-78" x="28.9" y="0"> </tspan><tspan class="cls-24" x="31.9" y="0">is</tspan><tspan class="cls-65" x="39.9" y="0"> </tspan><tspan x="42.9" y="0">th</tspan><tspan class="cls-97" x="54" y="0">e</tspan><tspan class="cls-108" x="60.5" y="0"> </tspan></text>
+  </g>
+  <g class="cls-84">
+    <text class="cls-27" transform="translate(1311.8 281.8)"><tspan class="cls-19" x="0" y="0">t</tspan><tspan class="cls-38" x="4.5" y="0">a</tspan><tspan class="cls-19" x="10.9" y="0">r</tspan><tspan x="15.6" y="0">g</tspan><tspan class="cls-69" x="21.7" y="0">e</tspan><tspan class="cls-19" x="28.2" y="0">t</tspan><tspan x="32.7" y="0"> </tspan></text>
+  </g>
+  <g class="cls-117">
+    <text class="cls-28" transform="translate(1347.5 281.8)"><tspan x="0" y="0">to</tspan><tspan class="cls-65" x="11.2" y="0"> </tspan><tspan x="14.1" y="0">p</tspan><tspan class="cls-134" x="21" y="0">r</tspan><tspan class="cls-108" x="25.5" y="0">ote</tspan><tspan class="cls-65" x="43.2" y="0">c</tspan><tspan x="48.7" y="0">t?</tspan></text>
+  </g>
+  <rect class="cls-109" x="1144.4" y="316.8" width="110.7" height="26.9"/>
+  <rect class="cls-54" x="1144.4" y="316.8" width="110.7" height="26.9"/>
+  <g class="cls-32">
+    <text class="cls-28" transform="translate(1167.2 334.3)"><tspan class="cls-65" x="0" y="0">D</tspan><tspan class="cls-24" x="8" y="0">at</tspan><tspan class="cls-85" x="18.6" y="0">a</tspan><tspan class="cls-112" x="24.8" y="0"> </tspan><tspan x="27.7" y="0">P</tspan><tspan class="cls-31" x="34.4" y="0">r</tspan><tspan x="38.9" y="0">i</tspan><tspan class="cls-78" x="41.9" y="0">v</tspan><tspan class="cls-24" x="47.8" y="0">a</tspan><tspan class="cls-107" x="54" y="0">c</tspan><tspan x="59.4" y="0">y</tspan></text>
+  </g>
+  <rect class="cls-103" x="1276.3" y="316.8" width="102.1" height="26.9"/>
+  <rect class="cls-54" x="1276.3" y="316.8" width="102.1" height="26.9"/>
+  <g class="cls-111">
+    <text class="cls-28" transform="translate(1287.6 334.3)"><tspan class="cls-9" x="0" y="0">M</tspan><tspan x="11.1" y="0">o</tspan><tspan class="cls-78" x="18" y="0">d</tspan><tspan x="24.8" y="0">e</tspan><tspan class="cls-69" x="31.3" y="0">l</tspan><tspan class="cls-65" x="34.2" y="0"> </tspan><tspan class="cls-97" x="37.1" y="0">S</tspan><tspan x="43.1" y="0">e</tspan><tspan class="cls-107" x="49.6" y="0">c</tspan><tspan x="55" y="0">u</tspan><tspan class="cls-134" x="61.8" y="0">r</tspan><tspan x="66.4" y="0">ity</tspan></text>
+  </g>
+  <rect class="cls-126" x="1399.6" y="316.8" width="110.7" height="38.3"/>
+  <rect class="cls-54" x="1399.6" y="316.8" width="110.7" height="38.3"/>
+  <g class="cls-67">
+    <text class="cls-28" transform="translate(1421.4 332.1)"><tspan class="cls-78" x="0" y="0">C</tspan><tspan x="6.9" y="0">o</tspan><tspan class="cls-78" x="13.8" y="0">n</tspan><tspan x="20.6" y="0">tri</tspan><tspan class="cls-65" x="32.4" y="0">b</tspan><tspan x="39.3" y="0">uti</tspan><tspan class="cls-94" x="53.3" y="0">o</tspan><tspan x="60.2" y="0">n </tspan></text>
+  </g>
+  <g class="cls-52">
+    <text class="cls-28" transform="translate(1433.4 347.7)"><tspan class="cls-97" x="0" y="0">F</tspan><tspan x="6" y="0">a</tspan><tspan class="cls-31" x="12.2" y="0">i</tspan><tspan class="cls-69" x="15.2" y="0">r</tspan><tspan x="19.7" y="0">n</tspan><tspan class="cls-106" x="26.5" y="0">e</tspan><tspan x="33" y="0">ss</tspan></text>
+  </g>
+  <line class="cls-55" x1="369" y1="240.3" x2="368.8" y2="258.2"/>
+  <polygon class="cls-46" points="372.3 257.4 368.7 264.4 365.2 257.3 372.3 257.4"/>
+  <line class="cls-55" x1="368.7" y1="291.3" x2="417" y2="315.5"/>
+  <polygon class="cls-46" points="417.8 311.9 422.5 318.2 414.7 318.2 417.8 311.9"/>
+  <line class="cls-55" x1="368.7" y1="291.3" x2="321.7" y2="315.4"/>
+  <polygon class="cls-46" points="324.1 318.2 316.2 318.2 320.9 311.9 324.1 318.2"/>
+  <line class="cls-55" x1="665.2" y1="240.3" x2="665" y2="258.2"/>
+  <polygon class="cls-46" points="668.5 257.4 665 264.4 661.5 257.3 668.5 257.4"/>
+  <line class="cls-55" x1="664.8" y1="291.3" x2="631.8" y2="312.1"/>
+  <polygon class="cls-46" points="634.5 314.6 626.6 315.4 630.7 308.7 634.5 314.6"/>
+  <line class="cls-55" x1="664.8" y1="291.3" x2="780.8" y2="314.2"/>
+  <polygon class="cls-46" points="780.6 310.6 786.8 315.4 779.2 317.5 780.6 310.6"/>
+  <line class="cls-55" x1="626.6" y1="342.3" x2="566.5" y2="360.4"/>
+  <polygon class="cls-46" points="568.3 363.5 560.6 362.2 566.3 356.8 568.3 363.5"/>
+  <line class="cls-55" x1="560.6" y1="389.1" x2="514.4" y2="414.5"/>
+  <polygon class="cls-46" points="516.9 417.1 509 417.4 513.5 411 516.9 417.1"/>
+  <line class="cls-55" x1="626.6" y1="342.3" x2="704.3" y2="360.8"/>
+  <polygon class="cls-46" points="704.2 357.1 710.2 362.2 702.6 364 704.2 357.1"/>
+  <line class="cls-55" x1="560.6" y1="389.1" x2="600.2" y2="414.2"/>
+  <polygon class="cls-46" points="601.3 410.7 605.4 417.4 597.5 416.7 601.3 410.7"/>
+  <line class="cls-55" x1="993.4" y1="240.3" x2="993.4" y2="258.2"/>
+  <polygon class="cls-46" points="996.9 257.3 993.4 264.4 989.9 257.3 996.9 257.3"/>
+  <line class="cls-55" x1="993.4" y1="291.3" x2="948.1" y2="314.7"/>
+  <polygon class="cls-46" points="950.5 317.4 942.7 317.5 947.3 311.2 950.5 317.4"/>
+  <line class="cls-55" x1="993.4" y1="291.3" x2="1061.5" y2="313.5"/>
+  <polygon class="cls-46" points="1061.8 309.9 1067.4 315.4 1059.6 316.6 1061.8 309.9"/>
+  <line class="cls-55" x1="942.7" y1="340.2" x2="886.9" y2="361.4"/>
+  <polygon class="cls-46" points="889 364.4 881.1 363.6 886.5 357.8 889 364.4"/>
+  <line class="cls-55" x1="942.7" y1="340.2" x2="1029" y2="362.1"/>
+  <polygon class="cls-46" points="1029 358.4 1034.9 363.6 1027.2 365.3 1029 358.4"/>
+  <line class="cls-55" x1="881.1" y1="390.5" x2="906.9" y2="413.4"/>
+  <polygon class="cls-46" points="908.5 410.1 911.5 417.4 903.9 415.4 908.5 410.1"/>
+  <line class="cls-55" x1="1034.9" y1="390.5" x2="1012.3" y2="413.1"/>
+  <polygon class="cls-46" points="1015.4 415 1007.9 417.4 1010.4 410 1015.4 415"/>
+  <line class="cls-55" x1="1034.9" y1="390.5" x2="1098.7" y2="415.2"/>
+  <polygon class="cls-46" points="1099.1 411.6 1104.4 417.4 1096.6 418.2 1099.1 411.6"/>
+  <line class="cls-55" x1="1327" y1="241" x2="1327.2" y2="258.2"/>
+  <polygon class="cls-46" points="1330.7 257.3 1327.2 264.4 1323.6 257.4 1330.7 257.3"/>
+  <line class="cls-55" x1="1327.4" y1="291.3" x2="1205.8" y2="315.6"/>
+  <polygon class="cls-46" points="1207.4 318.9 1199.8 316.8 1206 312 1207.4 318.9"/>
+  <line class="cls-55" x1="1327.4" y1="291.3" x2="1327.4" y2="310.7"/>
+  <polygon class="cls-46" points="1330.9 309.8 1327.4 316.8 1323.8 309.8 1330.9 309.8"/>
+  <line class="cls-55" x1="1327.4" y1="291.3" x2="1448.9" y2="315.6"/>
+  <polygon class="cls-46" points="1448.7 312 1454.9 316.8 1447.3 318.9 1448.7 312"/>
+  <rect class="cls-72" x="755.4" y="417.4" width="102.1" height="26.9"/>
+  <rect class="cls-54" x="755.4" y="417.4" width="102.1" height="26.9"/>
+  <g class="cls-128">
+    <text class="cls-29" transform="translate(766.9 434.9)"><tspan class="cls-41" x="0" y="0">U</tspan><tspan class="cls-137" x="8.4" y="0">n</tspan><tspan x="15.1" y="0">co</tspan><tspan class="cls-131" x="27.5" y="0">m</tspan><tspan x="37.9" y="0">p</tspan><tspan class="cls-120" x="44.7" y="0">r</tspan><tspan class="cls-137" x="49.3" y="0">e</tspan><tspan class="cls-41" x="55.7" y="0">s</tspan><tspan x="60.8" y="0">sed</tspan></text>
+  </g>
+  <line class="cls-55" x1="881.1" y1="390.5" x2="812.3" y2="415.4"/>
+  <polygon class="cls-46" points="814.3 418.4 806.5 417.4 811.9 411.7 814.3 418.4"/>
+</svg>
