@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1167 656">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f7f8f8;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1, .cls-3, .cls-5, .cls-14, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13 {
+        stroke-width: 1.5px;
+      }
+
+      .cls-2, .cls-4 {
+        stroke-width: 1.53px;
+      }
+
+      .cls-2, .cls-5, .cls-14, .cls-9, .cls-11 {
+        fill: none;
+      }
+
+      .cls-3 {
+        fill: lime;
+      }
+
+      .cls-15 {
+        font-size: 24px;
+      }
+
+      .cls-15, .cls-16 {
+        font-family: TimesNewRomanPSMT, 'Times New Roman';
+      }
+
+      .cls-4, .cls-10 {
+        fill: #e6e6e6;
+      }
+
+      .cls-5 {
+        stroke-dasharray: 10.41 10.41;
+      }
+
+      .cls-14 {
+        stroke: #404040;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-17, .cls-8 {
+        fill: #fff;
+      }
+
+      .cls-6 {
+        fill: aqua;
+      }
+
+      .cls-18 {
+        fill: #404040;
+        fill-rule: evenodd;
+      }
+
+      .cls-7 {
+        fill: #ccc;
+      }
+
+      .cls-9 {
+        stroke-dasharray: 9.04 9.04;
+      }
+
+      .cls-19 {
+        letter-spacing: -.08em;
+      }
+
+      .cls-16 {
+        font-size: 26px;
+      }
+
+      .cls-12 {
+        fill: red;
+      }
+
+      .cls-13 {
+        fill: #ff0;
+      }
+    </style>
+  </defs>
+  <g id="api库">
+    <ellipse class="cls-8" cx="179.25" cy="30.22" rx="85.75" ry="17.22"/>
+    <line class="cls-11" x1="93.5" y1="30" x2="93.5" y2="187.16"/>
+    <line class="cls-11" x1="265.5" y1="30" x2="265.5" y2="187.16"/>
+    <g>
+      <path class="cls-17" d="M266,187.35c0-9.47-38.5-17.14-86-17.14-28.02,0-52.9,2.67-68.6,6.8-10.92,2.87-17.4,6.45-17.4,10.34"/>
+      <g>
+        <path class="cls-11" d="M266,187.35c0-1.29-.72-2.55-2.07-3.76"/>
+        <path class="cls-9" d="M256.01,179.33c-14.44-5.42-43.06-9.11-76.01-9.11-28.02,0-52.9,2.67-68.6,6.8-4.74,1.25-8.64,2.63-11.54,4.11"/>
+        <path class="cls-11" d="M96.07,183.6c-1.36,1.21-2.07,2.46-2.07,3.75"/>
+      </g>
+    </g>
+    <path class="cls-8" d="M94,187.5c0,9.47,38.5,17.14,86,17.14,28.02,0,52.9-2.67,68.6-6.8,10.92-2.87,17.4-6.45,17.4-10.34"/>
+    <circle class="cls-12" cx="170.25" cy="68.75" r="9.75"/>
+    <circle class="cls-12" cx="158.97" cy="101.58" r="9.75"/>
+    <circle class="cls-12" cx="222.58" cy="132.37" r="9.75"/>
+    <circle class="cls-13" cx="128.18" cy="128.26" r="9.75"/>
+    <circle class="cls-13" cx="230.79" cy="68.75" r="9.75"/>
+    <circle class="cls-13" cx="130.23" cy="68.75" r="9.75"/>
+    <circle class="cls-3" cx="175.38" cy="132.37" r="9.75"/>
+    <circle class="cls-3" cx="189.5" cy="176.5" r="9.5"/>
+    <circle class="cls-3" cx="148.7" cy="167.25" r="9.75"/>
+    <circle class="cls-6" cx="231.82" cy="101.58" r="9.75"/>
+    <circle class="cls-6" cx="220.53" cy="164.17" r="9.75"/>
+    <circle class="cls-6" cx="205.14" cy="100.56" r="9.75"/>
+    <text class="cls-15" transform="translate(67 226.33)"><tspan class="cls-19" x="0" y="0">W</tspan><tspan x="20.73" y="0">eb Service Repository</tspan></text>
+  </g>
+  <g id="word2vec_model">
+    <rect class="cls-11" x="752.34" y="54.86" width="205.15" height="99.17"/>
+    <text class="cls-15" transform="translate(773.73 111.26)"><tspan class="cls-19" x="0" y="0">W</tspan><tspan x="20.73" y="0">ord2vec Model</tspan></text>
+    <polygon class="cls-10" points="724.62 134.71 752.3 154.61 752.3 55.43 724.62 35.54 724.62 134.71"/>
+    <line class="cls-11" x1="724.79" y1="35.73" x2="929.94" y2="35.73"/>
+    <line class="cls-11" x1="957.8" y1="54.48" x2="929.67" y2="35.73"/>
+  </g>
+  <g id="word_matrix" data-name="word matrix">
+    <g id="_圆形表示" data-name="圆形表示">
+      <g id="_圆形1" data-name="圆形1">
+        <rect class="cls-8" x="768.5" y="251.67" width="325.47" height="261.58" rx="9.93" ry="9.93"/>
+        <circle class="cls-11" cx="806.89" cy="286.25" r="24.23"/>
+        <circle class="cls-11" cx="868.19" cy="286.25" r="24.23"/>
+        <circle class="cls-11" cx="931.21" cy="286.25" r="24.23"/>
+        <circle class="cls-11" cx="993.37" cy="286.25" r="24.23"/>
+        <circle class="cls-11" cx="1055.53" cy="286.25" r="24.23"/>
+        <circle class="cls-11" cx="806.89" cy="349.28" r="24.23"/>
+        <circle class="cls-11" cx="868.19" cy="349.28" r="24.23"/>
+        <circle class="cls-11" cx="931.21" cy="349.28" r="24.23"/>
+        <circle class="cls-11" cx="993.37" cy="349.28" r="24.23"/>
+        <circle class="cls-11" cx="1055.53" cy="349.28" r="24.23"/>
+        <circle class="cls-11" cx="806.89" cy="412.3" r="24.23"/>
+        <circle class="cls-11" cx="868.19" cy="412.3" r="24.23"/>
+        <circle class="cls-11" cx="931.21" cy="412.3" r="24.23"/>
+        <circle class="cls-11" cx="993.37" cy="412.3" r="24.23"/>
+        <circle class="cls-11" cx="1055.53" cy="412.3" r="24.23"/>
+        <circle class="cls-11" cx="806.89" cy="475.32" r="24.23"/>
+        <circle class="cls-11" cx="868.19" cy="475.32" r="24.23"/>
+        <circle class="cls-11" cx="931.21" cy="475.32" r="24.23"/>
+        <circle class="cls-11" cx="993.37" cy="475.32" r="24.23"/>
+        <circle class="cls-11" cx="1055.53" cy="475.32" r="24.23"/>
+        <rect class="cls-5" x="768.5" y="256.85" width="325.47" height="58.71" rx="10.76" ry="10.76"/>
+        <rect class="cls-5" x="768.5" y="319.87" width="325.47" height="58.71" rx="10.76" ry="10.76"/>
+        <rect class="cls-5" x="768.5" y="382.89" width="325.47" height="58.71" rx="10.76" ry="10.76"/>
+        <rect class="cls-5" x="768.5" y="445.91" width="325.47" height="58.71" rx="10.76" ry="10.76"/>
+      </g>
+      <g id="_圆形2" data-name="圆形2">
+        <rect class="cls-8" x="793.9" y="273.35" width="325.47" height="261.58" rx="9.93" ry="9.93"/>
+        <circle class="cls-11" cx="832.3" cy="307.93" r="24.23"/>
+        <circle class="cls-11" cx="893.59" cy="307.93" r="24.23"/>
+        <circle class="cls-11" cx="956.61" cy="307.93" r="24.23"/>
+        <circle class="cls-11" cx="1018.77" cy="307.93" r="24.23"/>
+        <circle class="cls-11" cx="1080.93" cy="307.93" r="24.23"/>
+        <circle class="cls-11" cx="832.3" cy="370.95" r="24.23"/>
+        <circle class="cls-11" cx="893.59" cy="370.95" r="24.23"/>
+        <circle class="cls-11" cx="956.61" cy="370.95" r="24.23"/>
+        <circle class="cls-11" cx="1018.77" cy="370.95" r="24.23"/>
+        <circle class="cls-11" cx="1080.93" cy="370.95" r="24.23"/>
+        <circle class="cls-11" cx="832.3" cy="433.97" r="24.23"/>
+        <circle class="cls-11" cx="893.59" cy="433.97" r="24.23"/>
+        <circle class="cls-11" cx="956.61" cy="433.97" r="24.23"/>
+        <circle class="cls-11" cx="1018.77" cy="433.97" r="24.23"/>
+        <circle class="cls-11" cx="1080.93" cy="433.97" r="24.23"/>
+        <circle class="cls-11" cx="832.3" cy="497" r="24.23"/>
+        <circle class="cls-11" cx="893.59" cy="497" r="24.23"/>
+        <circle class="cls-11" cx="956.61" cy="497" r="24.23"/>
+        <circle class="cls-11" cx="1018.77" cy="497" r="24.23"/>
+        <circle class="cls-11" cx="1080.93" cy="497" r="24.23"/>
+        <rect class="cls-5" x="793.9" y="278.53" width="325.47" height="58.71" rx="10.76" ry="10.76"/>
+        <rect class="cls-5" x="793.9" y="341.55" width="325.47" height="58.71" rx="10.76" ry="10.76"/>
+        <rect class="cls-5" x="793.9" y="404.57" width="325.47" height="58.71" rx="10.76" ry="10.76"/>
+        <rect class="cls-5" x="793.9" y="467.59" width="325.47" height="58.71" rx="10.76" ry="10.76"/>
+      </g>
+      <g id="_圆形3" data-name="圆形3">
+        <rect class="cls-8" x="819.03" y="297.75" width="325.47" height="261.58" rx="9.93" ry="9.93"/>
+        <circle class="cls-11" cx="857.43" cy="332.33" r="24.23"/>
+        <circle class="cls-11" cx="918.72" cy="332.33" r="24.23"/>
+        <circle class="cls-11" cx="981.74" cy="332.33" r="24.23"/>
+        <circle class="cls-11" cx="1043.9" cy="332.33" r="24.23"/>
+        <circle class="cls-11" cx="1106.06" cy="332.33" r="24.23"/>
+        <circle class="cls-11" cx="857.43" cy="395.36" r="24.23"/>
+        <circle class="cls-11" cx="918.72" cy="395.36" r="24.23"/>
+        <circle class="cls-11" cx="981.74" cy="395.36" r="24.23"/>
+        <circle class="cls-11" cx="1043.9" cy="395.36" r="24.23"/>
+        <circle class="cls-11" cx="1106.06" cy="395.36" r="24.23"/>
+        <circle class="cls-11" cx="857.43" cy="458.38" r="24.23"/>
+        <circle class="cls-11" cx="918.72" cy="458.38" r="24.23"/>
+        <circle class="cls-11" cx="981.74" cy="458.38" r="24.23"/>
+        <circle class="cls-11" cx="1043.9" cy="458.38" r="24.23"/>
+        <circle class="cls-11" cx="1106.06" cy="458.38" r="24.23"/>
+        <circle class="cls-11" cx="857.43" cy="521.4" r="24.23"/>
+        <circle class="cls-11" cx="918.72" cy="521.4" r="24.23"/>
+        <circle class="cls-11" cx="981.74" cy="521.4" r="24.23"/>
+        <circle class="cls-11" cx="1043.9" cy="521.4" r="24.23"/>
+        <circle class="cls-11" cx="1106.06" cy="521.4" r="24.23"/>
+        <rect class="cls-5" x="819.03" y="302.93" width="325.47" height="58.71" rx="10.76" ry="10.76"/>
+        <rect class="cls-5" x="819.03" y="365.95" width="325.47" height="58.71" rx="10.76" ry="10.76"/>
+        <rect class="cls-5" x="819.03" y="428.97" width="325.47" height="58.71" rx="10.76" ry="10.76"/>
+        <rect class="cls-5" x="819.03" y="491.99" width="325.47" height="58.71" rx="10.76" ry="10.76"/>
+      </g>
+    </g>
+  </g>
+  <g id="RCNN">
+    <rect class="cls-2" x="457.68" y="261.89" width="250.54" height="121.11"/>
+    <text class="cls-16" transform="translate(466.67 310.97)"><tspan x="0" y="0">Feature Extractor with </tspan><tspan x="5.42" y="31.2">Deep Neural Network</tspan></text>
+    <polygon class="cls-4" points="423.83 359.4 457.63 383.69 457.63 262.58 423.83 238.29 423.83 359.4"/>
+    <line class="cls-2" x1="424.04" y1="238.51" x2="674.58" y2="238.51"/>
+    <line class="cls-2" x1="708.6" y1="261.42" x2="674.24" y2="238.51"/>
+  </g>
+  <g id="_聚类结果" data-name="聚类结果">
+    <rect class="cls-11" x="329.5" y="404.84" width="420" height="241.33"/>
+    <ellipse class="cls-11" cx="439.58" cy="457.06" rx="80.91" ry="43.16"/>
+    <circle class="cls-12" cx="403.26" cy="465.95" r="9.05"/>
+    <circle class="cls-12" cx="459.88" cy="437.18" r="9.05"/>
+    <circle class="cls-12" cx="475.66" cy="465.95" r="9.05"/>
+    <ellipse class="cls-11" cx="640.3" cy="457.06" rx="80.91" ry="43.16"/>
+    <ellipse class="cls-11" cx="439.58" cy="558.44" rx="80.91" ry="43.16"/>
+    <ellipse class="cls-11" cx="640.3" cy="558.44" rx="80.91" ry="43.16"/>
+    <circle class="cls-6" cx="603.74" cy="467.81" r="9.05"/>
+    <circle class="cls-6" cx="642.73" cy="481.73" r="9.05"/>
+    <circle class="cls-6" cx="676.14" cy="467.81" r="9.05"/>
+    <circle class="cls-3" cx="403.26" cy="563.62" r="9.05"/>
+    <circle class="cls-3" cx="442.24" cy="583.11" r="9.05"/>
+    <circle class="cls-3" cx="475.66" cy="563.62" r="9.05"/>
+    <circle class="cls-13" cx="603.74" cy="565.48" r="9.05"/>
+    <circle class="cls-13" cx="642.73" cy="583.11" r="9.05"/>
+    <circle class="cls-13" cx="676.14" cy="565.48" r="9.05"/>
+    <circle class="cls-12" cx="421.82" cy="435.32" r="9.05"/>
+    <circle class="cls-12" cx="439.46" cy="481.73" r="9.05"/>
+    <circle class="cls-3" cx="421.82" cy="534.85" r="9.05"/>
+    <circle class="cls-3" cx="459.88" cy="534.85" r="9.05"/>
+    <circle class="cls-6" cx="623.24" cy="437.18" r="9.05"/>
+    <circle class="cls-6" cx="658.51" cy="437.18" r="9.05"/>
+    <circle class="cls-13" cx="623.24" cy="534.85" r="9.05"/>
+    <circle class="cls-13" cx="658.51" cy="534.85" r="9.05"/>
+    <text class="cls-15" transform="translate(435.74 631.25)"><tspan class="cls-19" x="0" y="0">W</tspan><tspan x="20.73" y="0">eb Service Clusters</tspan></text>
+  </g>
+  <g id="API_Description" data-name="API Description">
+    <path class="cls-7" d="M589.35,158.14c-14.72,5.69-30.83,10.64-46.93,5.69-18.58-4.96-30.97-23.54-50.8-27.26-3.72-.93-7.43-1.16-11.11-.87-11.03.87-21.72,6.45-31.01,12.02V28.78h140v71.92c-.02,3.35-.02,6.49-.03,9.61.03,11.39.03,22.54-.04,33.62-.05,8.91-.08,14.21-.08,14.21Z"/>
+    <path class="cls-10" d="M602.35,170.86c-14.72,5.69-30.83,10.64-46.93,5.69-18.58-4.96-30.97-23.54-50.8-27.26-3.72-.93-7.43-1.16-11.11-.87-11.03.87-21.72,6.45-31.01,12.02V41.5h140v71.92c-.02,3.35-.02,6.49-.03,9.61.03,11.39.03,22.54-.04,33.62-.05,8.91-.08,14.21-.08,14.21Z"/>
+    <path class="cls-1" d="M619.35,185.86c-14.72,5.69-30.83,10.64-46.93,5.69-18.58-4.96-30.97-23.54-50.8-27.26-3.72-.93-7.43-1.16-11.11-.87-11.03.87-21.72,6.45-31.01,12.02V56.5h140v71.92c-.02,3.35-.02,6.49-.03,9.61.03,11.39.03,22.54-.04,33.62-.05,8.91-.08,14.21-.08,14.21Z"/>
+    <text class="cls-15" transform="translate(488.74 104.1)"><tspan class="cls-19" x="0" y="0">W</tspan><tspan x="20.73" y="0">eb Service</tspan><tspan x="4.69" y="28.8">Description</tspan></text>
+  </g>
+  <g id="Deep_Feature" data-name="Deep Feature">
+    <g id="feature1">
+      <rect class="cls-8" x="6.5" y="264.23" width="348.89" height="48.73" rx="8.46" ry="8.46"/>
+      <circle class="cls-11" cx="35.74" cy="288.27" r="20.79"/>
+      <circle class="cls-11" cx="95.52" cy="288.27" r="20.79"/>
+      <circle class="cls-11" cx="155.3" cy="288.27" r="20.79"/>
+      <circle class="cls-11" cx="214.43" cy="288.27" r="20.79"/>
+      <circle class="cls-11" cx="272.91" cy="288.27" r="20.79"/>
+      <circle class="cls-11" cx="327.72" cy="288.27" r="20.79"/>
+    </g>
+    <g id="feature2">
+      <rect class="cls-8" x="15.43" y="274.63" width="348.89" height="48.73" rx="8.46" ry="8.46"/>
+      <circle class="cls-11" cx="44.67" cy="298.68" r="20.79"/>
+      <circle class="cls-11" cx="104.44" cy="298.68" r="20.79"/>
+      <circle class="cls-11" cx="164.22" cy="298.68" r="20.79"/>
+      <circle class="cls-11" cx="223.35" cy="298.68" r="20.79"/>
+      <circle class="cls-11" cx="281.83" cy="298.68" r="20.79"/>
+      <circle class="cls-11" cx="336.65" cy="298.68" r="20.79"/>
+    </g>
+    <g id="feature3">
+      <rect class="cls-8" x="23.61" y="285.04" width="348.89" height="48.73" rx="8.46" ry="8.46"/>
+      <circle class="cls-11" cx="52.85" cy="309.08" r="20.79"/>
+      <circle class="cls-11" cx="112.63" cy="309.08" r="20.79"/>
+      <circle class="cls-11" cx="172.41" cy="309.08" r="20.79"/>
+      <circle class="cls-11" cx="231.54" cy="309.08" r="20.79"/>
+      <circle class="cls-11" cx="290.02" cy="309.08" r="20.79"/>
+      <circle class="cls-11" cx="344.83" cy="309.08" r="20.79"/>
+    </g>
+  </g>
+  <g id="_箭头" data-name="箭头">
+    <line class="cls-14" x1="266" y1="102" x2="427" y2="102"/>
+    <path class="cls-18" d="M448.24,104l-30-13.45c4.69,8.45,4.69,18.42,0,26.91l30-13.45Z"/>
+    <line class="cls-14" x1="620" y1="104" x2="706" y2="104"/>
+    <path class="cls-18" d="M724.24,104l-30-13.45c4.69,8.45,4.69,18.42,0,26.91l30-13.45Z"/>
+    <line class="cls-14" x1="1025.45" y1="207" x2="1025.45" y2="235"/>
+    <path class="cls-18" d="M1025.45,251.24l13.45-30c-8.45,4.69-18.42,4.69-26.91,0l13.45,30Z"/>
+    <line class="cls-14" x1="958" y1="104.5" x2="1025" y2="104.5"/>
+    <text class="cls-15" transform="translate(883.21 176)"><tspan x="0" y="0">Project a Service Description</tspan><tspan x="74.63" y="28.8" xml:space="preserve"> into a Matrix</tspan></text>
+    <line class="cls-14" x1="1025" y1="105" x2="1025" y2="153"/>
+    <line class="cls-14" x1="768" y1="311" x2="728" y2="311"/>
+    <path class="cls-18" d="M708.76,311l30-13.45c-4.69,8.45-4.69,18.42,0,26.91l-30-13.45Z"/>
+    <line class="cls-14" x1="424" y1="303" x2="390" y2="303"/>
+    <path class="cls-18" d="M372.76,303l30-13.45c-4.69,8.45-4.69,18.42,0,26.91l-30-13.45Z"/>
+    <text class="cls-15" transform="translate(75.76 356.45) scale(.95 1)"><tspan x="0" y="0">Service Implicit Feature</tspan></text>
+    <line class="cls-14" x1="181" y1="362" x2="181" y2="443"/>
+    <path class="cls-18" d="M181,462.24l13.45-30c-8.45,4.69-18.42,4.69-26.91,0l13.45,30Z"/>
+    <line class="cls-14" x1="271" y1="526" x2="306" y2="526"/>
+    <path class="cls-18" d="M329.24,526l-30-13.45c4.69,8.45,4.69,18.42,0,26.91l30-13.45Z"/>
+  </g>
+  <g id="K-Means">
+    <rect class="cls-11" x="64.52" y="481.95" width="205.15" height="99.17"/>
+    <text class="cls-15" transform="translate(113.46 536.63)"><tspan x="0" y="0">K-means++</tspan></text>
+    <polygon class="cls-10" points="36.8 561.79 64.48 581.69 64.48 482.52 36.8 462.62 36.8 561.79"/>
+    <line class="cls-11" x1="36.98" y1="462.81" x2="242.13" y2="462.81"/>
+    <line class="cls-11" x1="269.99" y1="481.56" x2="241.85" y2="462.81"/>
+    <path d="M1165.5,1.5v653H1.5V1.5h1164M1167,0H0v656h1167V0h0Z"/>
+  </g>
+</svg>
